@@ -17,14 +17,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 ## Hello!
-
-I am an undergraduate majoring in Math and Computer Science at Dickinson College. I am currently pursuing research and learning mainly in Computer Vision, but I like to experiment with Natural Language Processing, general Software Engineering, and Linux.
-
-I spent the past two years (2021 ~ 2023) serving in the Korean military and plan on returning to the US this fall.
-
-I sometimes [blog](./blog/index.html) and create videos for my Tech YouTube channel, [Converge2Diverge](https://youtube.com/converge2diverge). I love taking walks and swimming.
-
-I love talking to new people and learning about what they are working on, so feel free to reach out!
+I am a double degree student at TU Berlin(Berlin, Germany) & KTH(Stockholm, Sweden), majoring in ICT(Information and Communication Technology) & EE(Electrical Engineering). I am pursuing my master thesis internship for federated learning's hardware security enhancement at Trustworthy&Applied Cryptography, Huawei Munich Research Center.
 
 ## Currently
 I am currently participating in the VIPriors ICCV 2023 Challenge with a researcher from Yonsei University. Additionally, I am working on implementing milestone papers in Computer Vision as well as recreating some basics techniques in machine learning, such as Pytorch's Autograd and Transformers.
