@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://boosungkim.com/sitemap.xml
+Sitemap: https://daseinda.github.io//sitemap.xml
