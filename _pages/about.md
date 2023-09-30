@@ -2,14 +2,14 @@
 layout: about
 title: about
 permalink: /
-subtitle: Undergraduate majoring in Math and Computer Science @ Dickinson College.
+subtitle: Master student at KTH EECS College
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   address: >
-    <p>Carlisle, PA, USA</p>
+    <p>Darmstadt, Hessen, Germany</p>
 
 news: true  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts
@@ -17,13 +17,12 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 ## Hello!
-I am a double degree student at TU Berlin(Berlin, Germany) & KTH(Stockholm, Sweden), majoring in ICT(Information and Communication Technology) & EE(Electrical Engineering). I am pursuing my master thesis internship for federated learning's hardware security enhancement at Trustworthy&Applied Cryptography, Huawei Munich Research Center.
+I am a double degree student at TU Berlin(Berlin, Germany) & KTH(Stockholm, Sweden), majoring in  ICT(Information and Communication Technology) & EE(Electrical Engineering). I am pursuing my master thesis internship for federated learning's hardware security enhancement at Trustworthy&Applied Cryptography, Huawei Munich Research Center.
 
 ## Currently
-I am currently participating in the VIPriors ICCV 2023 Challenge with a researcher from Yonsei University. Additionally, I am working on implementing milestone papers in Computer Vision as well as recreating some basics techniques in machine learning, such as Pytorch's Autograd and Transformers.
-
+I am currently working on secure learning. I like discussing potentially feaseible methods for practical problems with nice and talented people, feel free to reach out!
 ## Recent Work/Research Experience
-#### Data Analyst in the Korean Army
+#### Data Analyst in the CN Army
 2021 ~ 2023
 
 I spent the past two years working as a data analyst for the Tunnel Neutralization Team in the Republic of Korea Army Intelligence. I utilized Fast Fourier Transformation and other military AI tools to collect and process North Korean underground sound data.
