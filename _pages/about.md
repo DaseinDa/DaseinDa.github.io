@@ -17,15 +17,19 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 ## Hello!
-I am a double degree student at TU Berlin(Berlin, Germany) & KTH(Stockholm, Sweden), majoring in  ICT(Information and Communication Technology) & EE(Electrical Engineering). I am pursuing my master thesis internship for federated learning's hardware security enhancement at Trustworthy&Applied Cryptography, Huawei Munich Research Center.
+I am a double-degree master student at **TU Berlin(Berlin, Germany) & KTH(Stockholm, Sweden)**, majoring in  ICT (Information and Communication Technology) & EE(Electrical Engineering). I am pursuing my master thesis internship for federated learning's hardware security enhancement at Trustworthy&Applied Cryptography Huawei Munich Research Center.
 
 ## Currently
-I am currently working on secure learning. I like discussing potentially feaseible methods for practical problems with nice and talented people, feel free to reach out!
+I am currently working on secure learning. I like discussing potentially feaseible methods for practical problems with nice and talented people, feel free to reach out! I am working on Intel SGX
+development for a large hybrid-secure platform project concentrating on cloud secure computation.
 ## Recent Work/Research Experience
-#### Data Analyst in the CN Army
-2021 ~ 2023
+#### Security Research Internship, Trustworthy and applied cryptography lab
+2023 June.- Dec.
+I am working as a research internship student at Trustworthy and Applied Cryptography Lab, Huawei Munich Center, Germany. I deployed machine learning's TEEs(Trusted Execution Environment) low-level interfaces based on Intel SGX. My C/C++ programming skills have grown a lot, happy to get to know applied cryptography knowledge such as DP(differential Privacy), MPC(Multi-Party Computation) cryptography methods etc. With the opportunity entrying security research, I find the topic of how to prevent system from attacks and leakages very interesting, and would like to continue contributing on the secure computation work in the future.
 
-I spent the past two years working as a data analyst for the Tunnel Neutralization Team in the Republic of Korea Army Intelligence. I utilized Fast Fourier Transformation and other military AI tools to collect and process North Korean underground sound data.
+#### Enhancing Privacy, Integrity and Security in Federated Learning: Intel SGX-based Multi-Party Computation Platform
+
+Master thesis supervised by Prof. and Prof. 
 
 #### Computer Vision Research
 Summer 2021

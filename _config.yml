@@ -7,7 +7,7 @@ title: blank
 first_name: Xin
 middle_name: 
 last_name: Jin
-email: boosung@boosungkim.com
+email: xiji@kth.se
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A lifelong learner interested in the modern world.
 # footer_text: >
@@ -74,9 +74,9 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 
 github_username: DaseinDa # your GitHub user name
 gitlab_username: # your GitLab user name
-twitter_username: bytesofboosung # your Twitter handle
+twitter_username: # your Twitter handle
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
-linkedin_username: boosungk # your LinkedIn user name
+linkedin_username:  # your LinkedIn user name
 telegram_username: # your Telegram user name
 scholar_userid: # your Google Scholar ID
 semanticscholar_id: # your Semantic Scholar ID
@@ -96,7 +96,7 @@ wikidata_id: # your wikidata id
 wikipedia_id: # your wikipedia id (Case sensitive)
 dblp_url: # your DBLP profile url
 stackoverflow_id: # your stackoverflow id
-kaggle_id: boosungkim # your kaggle id
+kaggle_id: # your kaggle id
 lastfm_id: # your lastfm id
 spotify_id: # your spotify id
 pinterest_id: # your pinterest id
@@ -123,7 +123,7 @@ bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Boosung's Blog # blog_name will be displayed in your blog page
+blog_name: Jin's Blog # blog_name will be displayed in your blog page
 blog_nav_title: blog # your blog must have a title for it to be displayed in the nav bar
 blog_description: Attempts at different things.
 permalink: /blog/:year/:title/
@@ -140,8 +140,8 @@ related_blog_posts:
 # Follow instructions on https://giscus.app/ to setup for your repo to fill out
 # the information below.
 giscus:
-  repo: boosungkim/boosungkim.github.io      # <your-github-user-name>/<your-github-repo-name>
-  repo_id: MDEwOlJlcG9zaXRvcnk2MDAyNDM2NQ==
+  repo: DaseinDa/daseinda.github.io     # <your-github-user-name>/<your-github-repo-name>
+  repo_id: 
   category: Comments             # name of the category under which discussions will be created
   category_id: DIC_kwDOA5PmLc4CTBt6
   mapping: title                 # identify discussions by post title
