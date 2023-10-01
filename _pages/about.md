@@ -1,5 +1,5 @@
 ---
-layout: about
+layout: about #使用 about.html的模板
 title: about
 permalink: /
 subtitle: Master student at KTH EECS College

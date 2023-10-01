@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post #使用了 post.html模板
 title: Blog 0 - Why I started a blog
 date: 2020-12-26
 description: my motivation for starting a blog
