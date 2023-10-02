@@ -4,7 +4,7 @@ title: Milestone CNN Models Implementations
 description: Implementations of Milestone Convolutional Neural Network Models.
 img: /assets/img/projects/densenet.png
 importance: 1
-category: subsidiary
+category: highlight
 ---
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
     {% include repository/repo.html repository="boosungkim/milestone-cnn-model-implementations" %}
