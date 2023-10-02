@@ -141,6 +141,19 @@ strong {
   color: var(--global-text-color);
 }
 
+.button {
+  position: relative;
+  top: 50%;
+  outline-width: 2 ch;
+  outline-color: black;
+}
+
+.button:focus {
+  outline-width: 1 ch;
+  outline-style: solid;
+  box-shadow: 0 0 0 4px #7125b3;
+}
+
 hr {
   border-top: 1px solid var(--global-divider-color);
 }
@@ -453,6 +466,10 @@ footer.sticky-bottom {
   color: var(--global-text-color-light);
 }
 
+.post-title {
+  font-size: 0.9 rem;
+  font-weight: 200;
+}
 .post-title mjx-container[jax=CHTML][display=true] {
   display: unset;
 }
