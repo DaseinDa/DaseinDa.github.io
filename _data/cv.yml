@@ -19,18 +19,27 @@
   type: time_table
   contents:
     - title: B.S. in Computer Science and Technology
-      institution: Dickinson College (Carlisle, PA)
+      institution: Southwestern University of Finance and Economics
       year: June 2021
       description:
         - Full ride scholarship Dean's List, Pi Mu Epsilon, Upsilon Pi Epsilon
         - Coursework - Data Structures and Algorithms, Object Oriented Programming, Computer Architecture, Linear Algebra, Deep Learning Specialization (Coursera), Large Scale Open Source Development, Probability and Statistics I & II, Gene Reprogramming of Human Leukemia Cells, Computability and Complexity, Programming Language Structures
 
     - title: B.S. in Mathematics(Honors)
-      institution: Dickinson College (Carlisle, PA)
+      institution: Southwestern University of Finance and Economics
       year: June 2021
       description:
-        - Full ride scholarship Dean's List, Pi Mu Epsilon, Upsilon Pi Epsilon
+        - Awarded to students who have National Mathematical Competition Prize, scientific publication and finished honors mathematical courses with great grade(at a difficult level).
+        - Only 8 students at the university graduating at 2021 successfully obtained the honors degree.
         - Coursework - Data Structures and Algorithms, Object Oriented Programming, Computer Architecture, Linear Algebra, Deep Learning Specialization (Coursera), Large Scale Open Source Development, Probability and Statistics I & II, Gene Reprogramming of Human Leukemia Cells, Computability and Complexity, Programming Language Structures
+
+    - title: B.S. in Financial Management
+      institution: Southwestern University of Finance and Economics
+      year: June 2021
+      description:
+        - Double degree program requires students finishing financial courses study and Financial Bachelor Thesis.
+        - Coursework - Data Structures and Algorithms, Object Oriented Programming, Computer Architecture, Linear Algebra, Deep Learning Specialization (Coursera), Large Scale Open Source Development, Probability and Statistics I & II, Gene Reprogramming of Human Leukemia Cells, Computability and Complexity, Programming Language Structures
+
 - title: Relevant Work Experience
   type: time_table
   contents:
