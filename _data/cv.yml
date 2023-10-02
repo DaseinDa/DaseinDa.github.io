@@ -5,26 +5,32 @@
   type: map
   contents:
     - name: Full Name
-      value: Boosung Kim
+      value: Jin Xin
     - name: Programming Languages
-      value: Python3, C++, Java, SQL, JavaScript, HTML, CSS, PHP
+      value: C/C++, Python, Linux Shell, Matlab, Java
     - name: Frameworks
-      value: PyTorch, TensorFlow, Keras, scikit-learn, Express, React, Node.js, Django, FastAPI
+      value: PyTorch, TensorFlow, Keras, scikit-learn
     - name: Developer Tools
-      value: Git, Linux, MySQL, MongoDB, Docker, VSCode, Vim, AWS EC2/Sagemaker, Apache
+      value: Git, Linux, MongoDB, Docker, VSCode, Vim
     - name: Spoken Languages
-      value: English (native), Korean (native), Chinese (fluent)
+      value: English(fluent), Chinese(native)
 
 - title: Education
   type: time_table
   contents:
-    - title: B.S. in Math and Computer Science
+    - title: B.S. in Computer Science and Technology
       institution: Dickinson College (Carlisle, PA)
-      year: May 2025
+      year: June 2021
       description:
         - Full ride scholarship Dean's List, Pi Mu Epsilon, Upsilon Pi Epsilon
         - Coursework - Data Structures and Algorithms, Object Oriented Programming, Computer Architecture, Linear Algebra, Deep Learning Specialization (Coursera), Large Scale Open Source Development, Probability and Statistics I & II, Gene Reprogramming of Human Leukemia Cells, Computability and Complexity, Programming Language Structures
 
+    - title: B.S. in Mathematics(Honors)
+      institution: Dickinson College (Carlisle, PA)
+      year: June 2021
+      description:
+        - Full ride scholarship Dean's List, Pi Mu Epsilon, Upsilon Pi Epsilon
+        - Coursework - Data Structures and Algorithms, Object Oriented Programming, Computer Architecture, Linear Algebra, Deep Learning Specialization (Coursera), Large Scale Open Source Development, Probability and Statistics I & II, Gene Reprogramming of Human Leukemia Cells, Computability and Complexity, Programming Language Structures
 - title: Relevant Work Experience
   type: time_table
   contents:
