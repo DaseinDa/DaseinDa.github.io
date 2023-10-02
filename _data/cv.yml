@@ -6,12 +6,12 @@
   contents:
     - name: Full Name
       value: Jin Xin
-    - name: Programming Languages
-      value: C/C++, Python, Linux Shell, Matlab, Java
+    - name: Programming Languages & ability
+      value: C/C++, Python, Linux Shell, Matlab, Java, Remote Develop
     - name: Frameworks
-      value: PyTorch, TensorFlow, Keras, scikit-learn
+      value: Cuda, PyTorch, TensorFlow, Keras, scikit-learn, mybatis, Piranha
     - name: Developer Tools
-      value: Git, Linux, MongoDB, Docker, VSCode, Vim
+      value: Git, Linux, VSCode, Vim
     - name: Spoken Languages
       value: English(fluent), Chinese(native)
 

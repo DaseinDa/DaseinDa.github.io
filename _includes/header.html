@@ -49,7 +49,7 @@
                 {% endif %}
               {% endfor %}
 
-              <!-- About -->
+              <!-- About define the homepage-->
               <li class="nav-item {% if page.permalink == '/' %}active{% endif %}">
                 <a class="nav-link" href="{{ '/' | relative_url }}">{{ about_title }}
                   {%- if page.permalink == '/' -%}
@@ -67,6 +67,20 @@
                 </a>
               </li>
               {%- endif %}
+
+              {% if site.under_nav_title %}
+              <!-- Undergraduate -->
+              <li class="nav-item {% if page.url contains 'under' %}active{% endif %}">
+                <a class="nav-link" href="{{ '/under/' | relative_url }}">{{ site.under_nav_title }}
+                  {%- if page.url contains 'under' -%}
+                  <span class="sr-only">(current)</span>
+                  {%- endif -%}
+                </a>
+              </li>
+              {%- endif %}
+
+
+
 
               <!-- Other pages -->
               {%- assign sorted_pages = site.pages | sort: "nav_order" -%}
@@ -100,6 +114,7 @@
               {%- endif -%}
               {%- endif -%}
               {% endfor -%}
+
               {%- if site.enable_darkmode %}
 
               <!-- Toogle theme mode -->

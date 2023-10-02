@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2021-10-12 14:00:00-0400
+date: 2020-08-01 14:00:00-0400
 inline: true
 related_posts: false
 ---
 
-Enlisted into the Korean Army.
+Bachelor graduation with 3 degrees!

@@ -127,6 +127,12 @@ blog_name: Jin's Blog # blog_name will be displayed in your blog page
 blog_nav_title: blog # your blog must have a title for it to be displayed in the nav bar
 blog_description: Attempts at different things.
 permalink: /blog/:year/:title/
+# -----------------------------------------------------------------------------
+# Undergraduate
+# -----------------------------------------------------------------------------
+
+under_nav_title: undergraduate # your blog must have a title for it to be displayed in the nav bar
+
 
 # Pagination
 pagination:
@@ -140,8 +146,8 @@ related_blog_posts:
 # Follow instructions on https://giscus.app/ to setup for your repo to fill out
 # the information below.
 giscus:
-  repo: DaseinDa/daseinda.github.io     # <your-github-user-name>/<your-github-repo-name>
-  repo_id: 
+  repo: daseinda/daseinda.github.io     # <your-github-user-name>/<your-github-repo-name>
+  repo_id: MDQ6VXNlcjY0MDg0OTUw
   category: Comments             # name of the category under which discussions will be created
   category_id: DIC_kwDOA5PmLc4CTBt6
   mapping: title                 # identify discussions by post title
