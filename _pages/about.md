@@ -40,7 +40,7 @@ Master thesis is supervised by [Dr. Tianxiang Dai](https://dblp.org/pid/188/4885
 
 I worked as a research assistant for [Prof. Shibai Yin](https://dblp.org/pid/140/0713.html) on the deep learning techniques such as transformer, combining traditional computer image theories such as atmosphere scattering model for image dehazing. The useful tools are pytorch, linux shell and git.
 
-<a href="http://boosungkim.com/assets/pdf/JinXin_Yin_publication.pdf">《Image Dehazing with Uneven Illumination Prior by Dense Residual Channel Attention Network》</a>.
+<a href="./assets/pdf/JinXin_Yin_publication.pdf">《Image Dehazing with Uneven Illumination Prior by Dense Residual Channel Attention Network》</a>.
 #### Computational Bioinformatics Research
 Spring 2021
 
