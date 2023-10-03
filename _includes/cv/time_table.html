@@ -16,8 +16,15 @@
             {% if content.institution %}
             <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">{{content.institution}}</h6>
             {% endif %}
+            {% if content.journal %}
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;" ><b>Journal: </b>{{content.journal}}</h6>
+            {% endif %}
+            {% if content.author %}
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;" ><b>Authors: </b>{{content.author}}</h6>
+            {% endif %}
+   
             {% if content.description %}
-              <ul class="items">
+              <ul class="items" style="text-align: justify">
                 {% for item in content.description %}
                   <li>
                     {% if item.contents %}
@@ -33,6 +40,9 @@
                   </li>
                 {% endfor %}
               </ul>
+            {% endif %}
+            {% if content.coursework %}
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;" ><b>Coursework: </b>{{content.coursework}}</h6>
             {% endif %}
             {% if content.items %}
               <ul class="items">

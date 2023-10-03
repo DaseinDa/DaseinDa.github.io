@@ -18,29 +18,37 @@
 - title: Education
   type: time_table
   contents:
-    - title: B.S. in Computer Science and Technology
+    - title: B.S. in Computer Science and Technology (81/100)
       institution: Southwestern University of Finance and Economics
       year: June 2021
       description:
-        - Full ride scholarship Dean's List, Pi Mu Epsilon, Upsilon Pi Epsilon
-        - Coursework - Data Structures and Algorithms, Object Oriented Programming, Computer Architecture, Linear Algebra, Deep Learning Specialization (Coursera), Large Scale Open Source Development, Probability and Statistics I & II, Gene Reprogramming of Human Leukemia Cells, Computability and Complexity, Programming Language Structures
+        - Admitted with the top 1.7 % at Sichuan Province of the NCEE(National Higher Education Entrance Examination)
+        - Coursework  -  Information Theory, Data Structure and Algorithm, Computer Network, Numertical Analysis, Assembly/Structured Programming/Object Oriented Programming, Digital Logic Circuit, Compiling Theory, Operating System, Computer Architecture, Blockchain Techs, Artificial Intelligence, Large Scale Open Source Development, Probability and Statistics I & II, Computability and Complexity, Network Security, Android Mobility Develop, Database Application, Web Mining
 
     - title: B.S. in Mathematics(Honors)
       institution: Southwestern University of Finance and Economics
       year: June 2021
       description:
-        - Awarded to students who have National Mathematical Competition Prize, scientific publication and finished honors mathematical courses with great grade(at a difficult level).
+        - Awarded to students who have National Mathematical Competition Prize, Scientific publication and finished honors mathematical courses with great grade(at a difficult level).
         - Only 8 students at the university graduating at 2021 successfully obtained the honors degree.
-        - Coursework - Data Structures and Algorithms, Object Oriented Programming, Computer Architecture, Linear Algebra, Deep Learning Specialization (Coursera), Large Scale Open Source Development, Probability and Statistics I & II, Gene Reprogramming of Human Leukemia Cells, Computability and Complexity, Programming Language Structures
+        - Coursework -  Mathematical Analysis, Advanced Algebra, Real Analysis, Functional analysis, Complex Analysis, Optimization theory, Discrete Mathematics, Probabilistic Theory, Partial Differential Equations, Statistics, Stochastic Process, Geometry
 
-    - title: B.S. in Financial Management
+    - title: B.S. in Financial Management (83/100)
       institution: Southwestern University of Finance and Economics
       year: June 2021
       description:
         - Double degree program requires students finishing financial courses study and Financial Bachelor Thesis.
-        - Coursework - Data Structures and Algorithms, Object Oriented Programming, Computer Architecture, Linear Algebra, Deep Learning Specialization (Coursera), Large Scale Open Source Development, Probability and Statistics I & II, Gene Reprogramming of Human Leukemia Cells, Computability and Complexity, Programming Language Structures
+      coursework: Microeconomics, Macroeconomics, Political Economics, Auditing, Intermediate Macroeconomics, Monetary Finance, Financial Investment, Accouting, Cost and Managerial Accounting, Accounting Information System, Fundamentals of Management, Intermediate Financial Accounting, Advanced Financial Accounting, Contemporary International Economy and Politics, Advanced Financial Stochastic Analysis,  Encrypted Digital Currency
 
-- title: Relevant Work Experience
+- title: Publication
+  type: time_table
+  contents:
+    - title: Image Dehazing with Uneven Illumination Prior by Dense Residual Channel Attention Network
+      journal: IET Image Processing (ISSN 1751-9659)
+      author: Shibai Yin, JIN Xin, Yibin Wang, Anup
+      year: 2020
+
+- title: Work Experience
   type: time_table
   contents:
     - title: Software Engineering Intern
