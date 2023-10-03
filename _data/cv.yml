@@ -1,8 +1,9 @@
 - title: PDF Version
-  contents: Click on the blue PDF icon above to view the PDF version of my resume! Or <a href="http://daseinda.com/assets/pdf/CV.pdf">click here</a>.
-  item: 
-  - <a href="http://daseinda.com/assets/pdf/transcript.pdf">Transcript</a>.
-  - <a href="http://daseinda.com/assets/pdf/rp.pdf">Master thesis research proposal</a>.
+  contents:
+   Click on the blue PDF icon above to view the PDF version of my resume! Or <a href="../assets/pdf/CV.pdf" target="_blank">click here</a>. Check my <a href="../assets/pdf/transcript.pdf">Transcript</a>. Check my <a href="../assets/pdf/rp.pdf">Master thesis research proposal</a>.
+
+    
+
 - title: General Information
   type: map
   contents:
@@ -16,6 +17,7 @@
       value: Git, Linux, VSCode, Vim
     - name: Spoken Languages
       value: English(fluent), Chinese(native)
+
 
 
 
@@ -60,7 +62,7 @@
 - title: Publication
   type: time_table
   contents:
-    - title: <a href="http://daseinda.com/assets/pdf/JinXin_Yin_publication.pdf">Image Dehazing with Uneven Illumination Prior by Dense Residual Channel Attention Network</a>
+    - title: <a href="../assets/pdf/JinXin_Yin_publication.pdf">Image Dehazing with Uneven Illumination Prior by Dense Residual Channel Attention Network</a>
       journal: IET Image Processing (ISSN 1751-9659)
       author: Shibai Yin, JIN Xin, Yibin Wang, Anup
       year: 2020
@@ -173,10 +175,11 @@
 - title: Competition
   type: time_table
   contents:
-    - title: National Second Prize for China Undergraduate Mathematical Contest in Modeling（MCM） 
+    - title: National Second Prize for China Undergraduate Mathematical Competition in Modeling（MCM） 
       institution: China Society for Industrial and Applied Mathematics
       year: Oct 2019
       description:
+        - <a href="../assets/pdf/cum.pdf">Research on the “Work Together” Strategy</a>. 
         - Time planning, controlling the process and progress of problem-solving, and decision makin
         - Learned about physical theory and mathematical differential equations dynamics modeling, such as rigid body dynamics and the Euler angle coordinate system and developed a complete system of concentric ball game a
         - Designed the model, built model assumptions, implemented algorithms and wrote the article
@@ -185,7 +188,7 @@
       institution: China Society for Industrial and Applied Mathematics
       year: Dec 2019
       description:
-        - <a href="http://daseinda.com/assets/pdf/APMCM.pdf"> The Linear Model Using AHP-FCE Method For Economic Vitality </a>.
+        - <a href="../assets/pdf/APMCM.pdf"> The Linear Model Using AHP-FCE Method For Economic Vitality </a>.
         - Developed and applied a regional economic dynamics evaluation index system
         - Literature review, Algorithm design, Programming and wrote the article
 
