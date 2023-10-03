@@ -1,6 +1,8 @@
 - title: PDF Version
-  contents: Click on the blue PDF icon above to view the PDF version of my resume! Or <a href="http://boosungkim.com/assets/pdf/boosungkim-resume.pdf">click here</a>.
-
+  contents: Click on the blue PDF icon above to view the PDF version of my resume! Or <a href="http://daseinda.com/assets/pdf/CV.pdf">click here</a>.
+  item: 
+  - <a href="http://daseinda.com/assets/pdf/transcript.pdf">Transcript</a>.
+  - <a href="http://daseinda.com/assets/pdf/rp.pdf">Master thesis research proposal</a>.
 - title: General Information
   type: map
   contents:
@@ -15,15 +17,30 @@
     - name: Spoken Languages
       value: English(fluent), Chinese(native)
 
-- title: Education
+
+
+- title: Double-degree Master Education
   type: time_table
   contents:
-    - title: B.S. in Computer Science and Technology (81/100)
+    - title: Master degree of Electrical Engineering
+      institution: KTH(Sweden)
+      year: Oct 2021 - Jan 2024
+
+    - title: Master degree of ICT(Information and Communication Technology) Innovation
+      institution: TU Berlin(Germany)
+      year: Oct 2021 - Jan 2024
+
+
+
+- title: Bachelor Education
+  type: time_table
+  contents:
+    - title: B.S. in Computer Science and Technology
       institution: Southwestern University of Finance and Economics
       year: June 2021
       description:
         - Admitted with the top 1.7 % at Sichuan Province of the NCEE(National Higher Education Entrance Examination)
-        - Coursework  -  Information Theory, Data Structure and Algorithm, Computer Network, Numertical Analysis, Assembly/Structured Programming/Object Oriented Programming, Digital Logic Circuit, Compiling Theory, Operating System, Computer Architecture, Blockchain Techs, Artificial Intelligence, Large Scale Open Source Development, Probability and Statistics I & II, Computability and Complexity, Network Security, Android Mobility Develop, Database Application, Web Mining
+      coursework: Information Theory, Data Structure and Algorithm, Computer Network, Numertical Analysis, Assembly/Structured Programming/Object Oriented Programming, Digital Logic Circuit, Compiling Theory, Operating System, Computer Architecture, Blockchain Techs, Artificial Intelligence, Large Scale Open Source Development, Probability and Statistics I & II, Computability and Complexity, Network Security, Android Mobility Develop, Database Application, Web Mining
 
     - title: B.S. in Mathematics(Honors)
       institution: Southwestern University of Finance and Economics
@@ -31,9 +48,9 @@
       description:
         - Awarded to students who have National Mathematical Competition Prize, Scientific publication and finished honors mathematical courses with great grade(at a difficult level).
         - Only 8 students at the university graduating at 2021 successfully obtained the honors degree.
-        - Coursework -  Mathematical Analysis, Advanced Algebra, Real Analysis, Functional analysis, Complex Analysis, Optimization theory, Discrete Mathematics, Probabilistic Theory, Partial Differential Equations, Statistics, Stochastic Process, Geometry
+      coursework: Mathematical Analysis, Advanced Algebra, Real Analysis, Functional analysis, Complex Analysis, Optimization theory, Discrete Mathematics, Probabilistic Theory, Partial Differential Equations, Statistics, Stochastic Process, Geometry
 
-    - title: B.S. in Financial Management (83/100)
+    - title: B.S. in Financial Management
       institution: Southwestern University of Finance and Economics
       year: June 2021
       description:
@@ -43,116 +60,158 @@
 - title: Publication
   type: time_table
   contents:
-    - title: Image Dehazing with Uneven Illumination Prior by Dense Residual Channel Attention Network
+    - title: <a href="http://daseinda.com/assets/pdf/JinXin_Yin_publication.pdf">Image Dehazing with Uneven Illumination Prior by Dense Residual Channel Attention Network</a>
       journal: IET Image Processing (ISSN 1751-9659)
       author: Shibai Yin, JIN Xin, Yibin Wang, Anup
       year: 2020
 
+
+
+
 - title: Work Experience
   type: time_table
   contents:
-    - title: Software Engineering Intern
-      institution: NEW Consulting, Co.
-      year: Jun 2023 - Jul 2023
+    - title: Cyber security and applied cryptography Research Internship Student
+      institution: Trustworthy and applied cryptography lab, Huawei Munich Research Center
+      year: June 2023 - Dec 2023
       description:
-        - Spearheaded the development of an automated NLP translation pipeline for marketing documents using Langchain, OpenAI API, and AWS Sagemaker, resulting in company cost savings of approximately $2,000 per month
-        - Deployed FastAPI services that handle automatic question and answer generation with a T5-based model using Docker
-        - Integrated automated API testing systems into CI/CD pipeline using the Postman framework
-    
-    - title: Data Analyst for the Tunnel Neutralization Team
-      institution: Republic of Korea Army Intelligence
-      year: Oct 2021 - Apr 2023
+          - Implement Intel SGX and MPC(Multi-Party Computation)interfaces for a hybrid secure computing platform project, focus on mahcine learning.
+
+    - title: Technician
+      institution: Dynasty Cargo Logistics Limited（DCL）
+      year: Jan 2020 - April 2020
       description:
-        - Identified and located over 30 North Korean underground activities by processing geological sound data with Fast Fourier Transformation and Spectral Analysis techniques using SQL, Excel, and proprietary military tools
-        - Automated 25% of the data pipeline and Excel tasks using SQL, VBA, and Python saving 6 hours of weekly manual work
-        - Led 13 successful reconnaissance team missions to maintain specialized military computers in the Demilitarized Zone
-        - Co-founded the RECON Coding Bootcamp, empowering over 10 soldiers and officers with invaluable skills in Python, enhancing their ability to address complex military challenges through advanced data analysis
-        - Recognized with the Academic Excellence Award for securing the second position among a cohort of over 70 trainees at the Korea Army Intelligence School's distinguished Class of 2021
-   
+          - Maintain and improving the logistics management information system
+          - Applied Java and MySQL to modify and designed a more reasonable database relationship for the logistic
+
+    - title: Information System Development training Trainee
+      institution: Sichuan Hwadee Information Technology Limited Company
+      year:  Aug 2019 - Sep 2019
+      description:
+          - Designed and implemented a web-based government information management system using Java language based on Mybatis framework, including JSP web page design, JavaScript information processing, and response interaction between web page 
+          - Completed the design and programming of processor information security, embedded programming of MySQL database, etc
+
 - title: Research Experience
   type: time_table
   contents:
-    - title: Computer Vision Research Intern under Professor John MacCormick
-      institution: Dickinson College Tome Robotics Lab
-      year: May 2021 - Aug 2021
+   
+    - title: Deep Learning and Image Processing, Research Assistant
+      institution: Southwestern University of Finance and Economics, Supervised by <a href="https://dblp.org/pid/140/0713.html">Prof. Shibai Yin</a>. 
+      year: 2018 - 2020
       description:
-        - Developed Convolutional Neural Network visualization pipelines for a custom dataset using Deconvolution, Filter Visualization, and Activation Maximization techniques written in Python and Tensorflow for easier interpretability
-        - Improved Top-5 accuracy by 8% through the substitution of the ZFNet backbone model with the VGG16 model
-        - Reduced 70% of environment issues by debugging and containerizing the visualization pipelines with Docker
-        - Conducted an extensive review of 12 cutting-edge CNN research papers and conference articles, synthesizing key findings and advancements in the field
-    
-    - title: Bioinformatics Research Assistant under Professor Michael Roberts
-      institution: Rector Biochemistry & Molecular Biology Research Lab
-      year: Jan 2021 - May 2021
+        - Cutting-edge literature review to survey and settle the research topic and methods
+        - Designed a feasible deep learning model; debugged the code programming and recorded the results; improved the algorithm design based on the running result
+        - Completed a paper as the second author, and published it in IET IMAGE 
+
+    - title: Research and design of an emotion-assisted analysis system based on emotion AI
+      institution: National final project for National Student Innovation and Entrepreneurship Program
+      year: Jan 2019 - May 2020
       description:
-        - Coordinated the Computational Biology sub-team to develop a scalable end-to-end data pipeline for analyzing cancer relapse rates based on 20,000 gene map samples using Random Forest, SVMs, and XGBoost in Python scikit-learn
-        - Achieved a balanced accuracy of 88.2%, precision score of 93.8%, recall score of 93.4%, and F1 score of 93.1%
-        - Actively contributed to weekly stand-up meetings, delivering comprehensive presentations on research findings and providing insightful interpretations of AML Bioinformatics papers
+        - Designed and implemented a platform for real-time input of students' facial information and feedback on their learning through computer cameras.
+        - Responsible for core algorithm design and implementation and design of recommendation models. For example, collaborative filtering, Chebyshev regression, etc. POCESSING
+
+    - title: Alzheimer's disease course prediction, Research Assistants
+      institution: Southwestern University of Finance and Economics, Statistic Research Centers, Supervisor by <a href="https://scholar.google.ca/citations?user=U2Ao6lIAAAAJ&hl=en">Prof. Liu Bin</a>. 
+      year: 2018 - 2020
+      description: 
+      - Implement designed loss function and deep learning model; cleaned and bootstrapped patient DICOM data using Linux shell 
+      - Completed data pre-processing; Designed and implemented residual neural network models with embedded new cross-entropy loss functions for disease course predict
+
+    - title: Internet of Things and Industry 4.0, Summer School
+      institution: Technical University of Munich(TUM) & Schneider Electric
+      year: Jul 2022 - Aug 2022
+      description: 
+      - Read the OPC/UA protocol original doc, and designed the solution to integrate legacy devices into OPC/UA platform.
+      - Designed the logic of an “plug-and-play” app “Rosetta 4.0” which runs on the industries' edge devices, and translated the data into OPC/UA standard
+      - Estimated the finance plan and competitor analysis for the app.
+
+    - title: Vehicle 2-X Communication and Control
+      institution: Technical University of Berlin, Faculty IV
+      year: Apr 2022 - Aug 20
+      description: 
+      - C++, omnetpp, Communication Protocol, Computer Network
+      - <a href="https://scholar.google.ca/citations?user=U2Ao6lIAAAAJ&hl=en">Final report</a>. 
+
 
 - title: Teaching Experience
   type: time_table
   contents:
-    - title: Math and Computer Science Teaching Assistant
-      institution: Dickinson College Math and CS Department
-      year: Jan 2020 - Present
+    - title: Algorithmic principles of Alpha go, a study of deep reinforcement learning and graph 
+      institution: University of Cambridge(GEC), Teaching Assistant
+      year: Feb 2021 - May 2021
       description:
-        - Courses - Multivariable Calculus, Computing with Python, and Data Structures and Algorithms, Object Oriented Programming, Graph Theory
-        - Led weekly study sessions, reviewed student code and graded homework
-        - 2020 - 2021, Aug 2023 - Present
+        -  Followed and took notes on the professor's lectures and answered questions during office hours.
+        - Responsible for the teaching classic papers in the field of deep reinforcement lear
+        - Followed up on the progress and content of each research group.
 
-- title: Leadership & Extra-Curricular
-  type: time_table
-  contents:
-    - title: Math and Computer Science Majors Committee
-      institution: Dickinson College Math and Computer Science Department
-      year: 2020 - Present
-
-    - title: Resident Advisor
-      institution: Dickinson College Residence Life Office
-      year: 2020 - Present
+    - title: Functions of complex variables and their application
+      institution: University of Cambridge(GEC), Teaching Assistant
+      year: 2021 Sept. -2021 Dec.
       description:
-        - 2020 - 2021, Aug 2023 - Present
-    
-    - title: Partnered YouTube Content Creator in Tech
-      institution: YouTube Partnership Program
-      year: 2018 - Present
+        - Followed and took notes on the professor's lectures and answered questions during office hours.
+        - Taught the derivation of the fundamental theorem of functions of complex variables, such as Cauchy-Riemann equation, Laplace transform, Laurent series, Cauchy integral etc.
 
 
-- title: Projects
+- title: Bachelor Thesis
   type: time_table
   contents:
-    - title: <a href="https://github.com/boosungkim/deepfiction">DeepFiction</a>
-      description: A full stack MERN website for generating and sharing AI short stories and images
-    - title: <a href="https://boosungkim.com/dllab">DeepLearnLab</a>
-      description: A platform for analysis of popular Deep Learning paper and tool implementations
-    - title: <a href="https://github.com/boosungkim/custom-chess-engine">Custom Chess Engine</a>
-      description: A custom chess engine, including a basic AI player written from scratch in Python and C++
-    - title: <a href="https://github.com/boosungkim/dickinson-college-menu-bot">Dickinson College Menu Bot</a>
-      description: A webscraper + email bot that retrieves and formats the cafeteria menu for students, professors, and faculty
+    - title: A BSR-CSR dynamic sparse storage format For Sparse matrix with dense submatrix
+      institution: The article suggests a BSR-CSR dynamic block hybrid storage approach for sparse matrix with dense sub-matrices multiplication to improve the operation continuity, and space of sparse matrix multiplication with dense sub-matrices in the calculation process. The purpose of this article is to devise a method for heuristically locating the dense sub-matrices in a sparse matrix. Finding and dividing dense submatrices reasonably into blocks can reduce the frequency of memory visits for sparse matrices that have dense submatrices. The concept of BSR dynamic partitioning matrix is put forth, in order to avoid multiple access to shared memory for a complete row or column caused by discontinuous access. And to equitably allocate the length of shared memory, this concept dynamically allocates the shared memory according to the size of partitioning matrix.
+      year: Feb 2021 - May 2021
+      description:
+        - Computer Science Bachelor Thesis, supervised by <a href="http://www.pandaslab.cn/chinese/index.html">Prof. Yao Chen</a>. 
+        - C++, Nvidia Library, Cuda, Sparse matrix Multiplication
 
-- title: Academic Honors and Awards
+    - title: An application and innovation of Clustering in the investment of Broken net shares
+      institution: Collective bidding directly influences stock price. Earnings, news, market mood, monetary policy, and public opinion all influence buying and selling. Evaluating events and determining their timeliness is highly challenging. Certain facts may still be reflected in fundamental conditions. The purpose of this article is to investigate the common traits and guidelines of the fundamentals in historical data. The A-share market sotck is more prone to be net-value broken than other global markets. This study examines the rationality, stability, and fair expectationof long-term profitability, for stock selection based on price-to-book ratios<1. 3,727 A-share mainland sotcks are used 
+      year: Feb 2021 - May 2021
+      description:
+        - Financial Bachelor Thesis
+        - K-means clustering algorithm based on SDTW distance for time series. BaoStock Interface, Python 3.8
+
+
+- title: Competition
   type: time_table
   contents:
-    - year: All semesters
-      items: 
-        - Dean's List
-    - year: 2021
-      items: 
-        - Pi Mu Epsilon (Mathematics)
-        - Upsilon Pi Epsilon (Computer Science)
-        - Henry P. Cannon Memorial Prize in Mathematics (Top Sophomore)
-    - year: 2020
-      items: 
-        - William W. Landis Memorial Prize in Mathematics (Top Freshman)
-        - Jane Hill Prize for excellence in Computer Science (Top Freshman)
-        - Alpha Lambda Delta
+    - title: National Second Prize for China Undergraduate Mathematical Contest in Modeling（MCM） 
+      institution: China Society for Industrial and Applied Mathematics
+      year: Oct 2019
+      description:
+        - Time planning, controlling the process and progress of problem-solving, and decision makin
+        - Learned about physical theory and mathematical differential equations dynamics modeling, such as rigid body dynamics and the Euler angle coordinate system and developed a complete system of concentric ball game a
+        - Designed the model, built model assumptions, implemented algorithms and wrote the article
+
+    - title: Third Prize for Asia and Pacific Mathematical Contest in Modeling (APMCM)
+      institution: China Society for Industrial and Applied Mathematics
+      year: Dec 2019
+      description:
+        - <a href="http://daseinda.com/assets/pdf/APMCM.pdf"> The Linear Model Using AHP-FCE Method For Economic Vitality </a>.
+        - Developed and applied a regional economic dynamics evaluation index system
+        - Literature review, Algorithm design, Programming and wrote the article
+
+
+
+
+
+
+- title: Competition Awards Academic Honors
+  type: time_table
+  contents:
     - year: 2019
       items: 
-        - Freshman Putnam score of 8 (top 39%)
-        - Benjamin Rush Scholarship ($60,000)
-    - year: 2018
+        - Cina Undergraduate Mathematical Contest in Modeling, National Second Prize
+        - National University Mathematics Competition, Third Prize
+        - Third-class Scholarship
+    - year: 2017-2018
+      items: 
+        - Sport Scholarship(twice)
+
+    - year: 2020
+      items: 
+        - ACM Chengdu Outstanding Undergraduate Nomination(only two recommended places in each university)
+    - year: 2021
+      items: 
+        - Distinction Certificate in Mathematics Honors Program
+    - year: 2018-2020
       items:
-        - Finalist in Twentieth Annual High School Mathematical Contest in Modeling (HiMCM)
-    - year: 2017
-      items:
-        - High Distinction (Top 10%) in Calculus for Beijing ASDAN Math Tournament (AMT)
+        - Scholarship for Scientific Research and Innovation (four times)
