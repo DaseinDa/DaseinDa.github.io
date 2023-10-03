@@ -69,7 +69,6 @@
 
 
 
-
 - title: Work Experience
   type: time_table
   contents:
@@ -103,7 +102,7 @@
       description:
         - Cutting-edge literature review to survey and settle the research topic and methods
         - Designed a feasible deep learning model; debugged the code programming and recorded the results; improved the algorithm design based on the running result
-        - Completed a paper as the second author, and published it in IET IMAGE 
+        - Completed a paper as the second author, and published it in IET IMAGE Processing
 
     - title: Research and design of an emotion-assisted analysis system based on emotion AI
       institution: National final project for National Student Innovation and Entrepreneurship Program
