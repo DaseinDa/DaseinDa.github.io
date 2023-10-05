@@ -22,7 +22,7 @@ I am a double-degree master student at **TU Berlin(Berlin, Germany) & KTH(Stockh
 
 ## Currently
 I am currently working on secure learning. I like discussing potentially feaseible methods for practical problems with nice and talented people, feel free to reach out! I am working on Intel SGX
-development for a large hybrid-secure platform project concentrating on cloud secure computation. **I am looking for secure machine learning PhD/RA/Research Intern opportunities, if you are interested in working with me, feel free to reach out!**
+development for a large hybrid-secure platform project concentrating on cloud secure computation. **I am looking for PhD/RA/Research Intern opportunities, working on Secure machine learning/Trustworthy AI/System security/Optimization/Applied cryptography, if you are interested in working with me, feel free to reach out!**
 ## Recent Work/Research Experience
 
 #### Security Research Internship, Trustworthy and applied cryptography lab
@@ -56,6 +56,7 @@ Submatrices》</a>.
 > Check out my [cv page](./cv) for more.
 
 ## Projects
+(in constructing......)
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
   {% for repo in site.data.repositories.github_repos %}
     {% include repository/repo.html repository=repo %}
