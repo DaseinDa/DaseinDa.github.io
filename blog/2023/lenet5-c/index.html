@@ -10,10 +10,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>2020 | Xin  Jin</title>
+    <title>The pure C implementation for LeNet5 | Xin  Jin</title>
     <meta name="author" content="Xin  Jin">
-    <meta name="description" content="A lifelong learner interested in the modern world.
-">
+    <meta name="description" content="The pure C implementation for LeNet5">
     <meta name="keywords" content="portfolio-website">
 
 
@@ -33,13 +32,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
 
     
+    <!-- Sidebar Table of Contents -->
+    <link href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css" rel="stylesheet">
+    
 
     <!-- Styles -->
     
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%8E%B9&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://daseinda.github.io//blog/2020/">
+    <link rel="canonical" href="https://daseinda.github.io//blog/2023/lenet5-c/">
 
     <!-- Dark Mode -->
     
@@ -95,9 +97,9 @@
 
               
               <!-- Blog -->
-              <!-- <li class="nav-item active">
+              <li class="nav-item active">
                 <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a>
-              </li> -->
+              </li>
 
 
 
@@ -132,37 +134,141 @@
     <!-- Content -->
     <div class="container mt-5">
       
-        <div class="post">
+        
+        <div class="row">
+          <!-- main content area -->
+          <div class="col-sm-9">
+            <!-- _layouts/post.html -->
+
+<div class="post">
 
   <header class="post-header">
-    <h1 class="post-title"> <i class="fas fa-calendar fa-sm"></i> 2020 </h1>
-    <p class="post-description"> an archive of posts from this year </p>
+    <h1 class="post-title">The pure C implementation for LeNet5</h1>
+    <p class="post-meta">June 20, 2023</p>
+    <p class="post-tags">
+      <a href="/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
+        ·  
+        <a href="/blog/category/cnn-c">
+          <i class="fas fa-tag fa-sm"></i> CNN_C</a>  
+          
+
+    </p>
   </header>
 
-  <article>
-    <div class="table-responsive">
-      <table class="table table-sm table-borderless">
-        
-        <tr>
-          <th scope="row">Dec 27, 2020</th>
-          <td>
-              <a class="post-link" href="/blog/2020/sticky-business-of-setting-up-a-web-server/">Sticky business of setting up a web server</a>
-          </td>
-        </tr>
-      
-        <tr>
-          <th scope="row">Dec 26, 2020</th>
-          <td>
-              <a class="post-link" href="/blog/2020/why-i-started-a-blog/">Blog 0 - Why I started a blog</a>
-          </td>
-        </tr>
-      
-      </table>
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <h2 id="the-visualization-of-lenet5-structure">The visualization of LeNet5 structure</h2>
+
+<!-- <img src="/assets/img/blogs/2023/LeNet5_C/LeNet5_Structure.jpg"  width="500">  -->
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/assets/img/blogs/2023/LeNet5_C/LeNet5_Structure.jpg" width="500">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">[1]</div>
+</center>
+
+<p>I am recording my LeNet5 C implementation for Intel SGX usage. Because Intel SGX interfaces can only be written in pure C, even C++ would not work. Assume the dataset is MNIST, the size of the black-white image matrix is (1,28,28)</p>
+
+<h2 id="how-to-calculate-the-matrix-size-after-layer-operations">How to calculate the matrix size after layer operations:</h2>
+
+<h3 id="convolution">Convolution</h3>
+<p>Assumptions:</p>
+<ul>
+  <li>The size of input matrix: (dimentional,W,W)</li>
+  <li>The size of kernel: (kernel_dimentional, F,F)</li>
+  <li>The step size: S</li>
+  <li>Padding: P</li>
+</ul>
+
+\[N = \frac{W-F+2P}{S}+1\]
+
+<p>The size of output matrix size is N.</p>
+
+<h2 id="preprocessing-load_input">PreProcessing load_input</h2>
+<p>add padding =2 to input matrix, the output matrix is N = 28+2*2=32</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```C
+  static inline void load_input(Feature *features, image input)
+  {
+    double (*layer0)[LENGTH_FEATURE0][LENGTH_FEATURE0] = features-&gt;input;
+    const long sz = sizeof(image) / sizeof(**input);
+    double mean = 0, std = 0;
+    FOREACH(j, sizeof(image) / sizeof(*input))
+      FOREACH(k, sizeof(*input) / sizeof(**input))
+    {
+      mean += input[j][k];
+      std += input[j][k] * input[j][k];
+    }
+    mean /= sz;
+    std = sqrt(std / sz - mean*mean);
+    FOREACH(j, sizeof(image) / sizeof(*input))
+      FOREACH(k, sizeof(*input) / sizeof(**input))
+    {
+      layer0[0][j + PADDING][k + PADDING] = (input[j][k] - mean) / std;
+    }
+  }
+  ```
+</code></pre></div></div>
+
+<h2 id="initial-the-strcuture-of-lenet5">Initial the strcuture of LeNet5</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```C
+  typedef struct LeNet5
+  {
+      double weight0_1[INPUT][LAYER1][LENGTH_KERNEL][LENGTH_KERNEL];
+      double weight2_3[LAYER2][LAYER3][LENGTH_KERNEL][LENGTH_KERNEL];
+      double weight4_5[LAYER4][LAYER5][LENGTH_KERNEL][LENGTH_KERNEL];
+      double weight5_6[LAYER5 * LENGTH_FEATURE5 * LENGTH_FEATURE5][OUTPUT];
+      /*bias*/
+      double bias0_1[LAYER1];
+      double bias2_3[LAYER3];
+      double bias4_5[LAYER5];
+      double bias5_6[OUTPUT];
+  }LeNet5;
+```
+</code></pre></div></div>
+
+<h3 id="the-explanation-for-c-struct-lenet5">The explanation for C struct LeNet5</h3>
+
+<h4 id="c1-layer">C1 Layer</h4>
+<ul>
+  <li>wegiht0_1: The 1st convolution layer/kernels for the input image(size: 1,32,32), the size of this kernel is: (INPUT=1,LENGTH_KERNEL=5,LENGTH_KERNEL=5), there are LAYER1=6 kernels. The step size is 1. After the first layer, the matrix size would change from (1,28,28) to (Layer1=6, N=28,N=28), consists of 6 feature maps. no padding, padding =0;</li>
+  <li>bias0_1: The bias for each kernel at C1 layer, there are LAYER1=6 bias corresponding to each feacture map.</li>
+  <li>activation: relu. after each convolution operation. Replace <strong><em>CNN-POOL-RELU</em></strong> with <strong><em>CNN-RELU-POOL</em></strong> process order, the latter one is mostly used in recent cnn applications.
+    <h4 id="s2-layer">S2 Layer</h4>
+    <p>This layer is pure computing operations, and no weights in the layer to compute. So There are no parameters at this layer for LeNet5 C struct. There is no activation function setting for this implementation</p>
+    <h5 id="down-sampling-layer">down-sampling layer</h5>
+    <p>The down-sampling kernel size is (2,2). The output at this layer is 28/kernel_size = (6,14,14), consists of 6 feature maps of size(14,14).</p>
+  </li>
+</ul>
+
+<h4 id="c3-layer">C3 Layer</h4>
+
+<h2 id="reference">Reference</h2>
+<div id="refer-anchor-1"></div>
+
+<ul>
+  <li>[1] https://zhuanlan.zhihu.com/p/41736894</li>
+</ul>
+
     </div>
   </article>
 
+
 </div>
 
+          </div>
+          <!-- sidebar, which will move to the top on a small screen -->
+          <div class="col-sm-3">
+            <nav id="toc-sidebar" class="sticky-top"></nav>
+          </div>
+        </div>
+        
       
     </div>
 
@@ -188,6 +294,9 @@
   <!-- Medium Zoom JS -->
   <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
   <script defer src="/assets/js/zoom.js"></script>
+  <!-- Sidebar Table of Contents -->
+  <script defer src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
+
 
   <!-- Bootstrap Table -->
   <script defer src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
