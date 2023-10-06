@@ -133,6 +133,8 @@ permalink: /blog/:year/:title/
 
 under_nav_title: undergraduate # your blog must have a title for it to be displayed in the nav bar
 
+# Google Analytics
+google_analytics: G-WDVZ1BQVD0
 
 # Pagination
 pagination:
