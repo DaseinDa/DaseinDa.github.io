@@ -178,10 +178,10 @@
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">[1]</div>
+    padding: 2px;">[2]</div>
 </center>
 
-<p>I am recording my LeNet5 C implementation for Intel SGX usage. Because Intel SGX interfaces can only be written in pure C, even C++ would not work. Assume the dataset is MNIST, the size of the black-white image matrix is (1,28,28)</p>
+<p>I am recording my LeNet5 C implementation for Intel SGX usage. Because Intel SGX interfaces can only be written in pure C, even C++ would not work. Assume the dataset is MNIST, the size of the black-white image matrix is (1,28,28). The model parameters matrix number group used in the implementation is 3-dimensional. There are 4-dimensional number group in input/output matrices to record the products during the learning process.</p>
 
 <h2 id="how-to-calculate-the-matrix-size-after-layer-operations">How to calculate the matrix size after layer operations:</h2>
 
@@ -198,31 +198,56 @@
 
 <p>The size of output matrix size is N.</p>
 
-<h2 id="preprocessing-load_input">PreProcessing load_input</h2>
-<p>add padding =2 to input matrix, the output matrix is N = 28+2*2=32</p>
+<h2 id="the-meaning-of-batch-size">The meaning of Batch Size</h2>
+<ul>
+  <li>Batch size is the number of training images between each backward/parameter updates.</li>
+  <li>Batch size training can be parallelized with openmp at C. But not work at Intel SGX up to now(I am trying to apply the openmp in Intel SGX at the present).</li>
+</ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```C
-  static inline void load_input(Feature *features, image input)
-  {
-    double (*layer0)[LENGTH_FEATURE0][LENGTH_FEATURE0] = features-&gt;input;
-    const long sz = sizeof(image) / sizeof(**input);
-    double mean = 0, std = 0;
-    FOREACH(j, sizeof(image) / sizeof(*input))
-      FOREACH(k, sizeof(*input) / sizeof(**input))
-    {
-      mean += input[j][k];
-      std += input[j][k] * input[j][k];
+<h2 id="convolution-implementation">Convolution implementation</h2>
+<pre><code class="language-C">    #define CONVOLUTION_FORWARD(input,output,weight,bias,action)					\
+    {																				
+      for (int x = 0; x &lt; GETLENGTH(weight); ++x)									\
+        for (int y = 0; y &lt; GETLENGTH(*weight); ++y)							\
+          CONVOLUTE_VALID(input[x], output[y], weight[x][y]);					\
+      FOREACH(j, GETLENGTH(output))												\
+        FOREACH(i, GETCOUNT(output[j]))											\
+        ((double *)output[j])[i] = action(((double *)output[j])[i] + bias[j]);	\
     }
-    mean /= sz;
-    std = sqrt(std / sz - mean*mean);
-    FOREACH(j, sizeof(image) / sizeof(*input))
-      FOREACH(k, sizeof(*input) / sizeof(**input))
-    {
-      layer0[0][j + PADDING][k + PADDING] = (input[j][k] - mean) / std;
-    }
-  }
-  ```
-</code></pre></div></div>
+</code></pre>
+<ul>
+  <li>The input[x] is the channel of the input matrix.</li>
+  <li>The output[y] is the number of feature map for input image’s x channel. For each image’s x channel, the first (for) loop plus each x convolution computation operation to the output[y], and achieve the convolution performance.</li>
+</ul>
+
+<h2 id="preprocessing-load_input">PreProcessing load_input</h2>
+<ul>
+  <li>Add padding =2 to input matrix, the output matrix is N = 28+2*2=32. Achieve by create a layer0 matrix with required size of 32,32, then fill in image’s data from 3 to 30(number group from 2 to 29)</li>
+  <li>
+    <p>Standardlization and normalization</p>
+
+    <pre><code class="language-C">   static inline void load_input(Feature *features, image input)
+   {
+     double (*layer0)[LENGTH_FEATURE0][LENGTH_FEATURE0] = features-&gt;input;
+     const long sz = sizeof(image) / sizeof(**input);
+     double mean = 0, std = 0;
+     FOREACH(j, sizeof(image) / sizeof(*input))
+       FOREACH(k, sizeof(*input) / sizeof(**input))
+     {
+       mean += input[j][k];
+       std += input[j][k] * input[j][k];
+     }
+     mean /= sz;
+     std = sqrt(std / sz - mean*mean);
+     FOREACH(j, sizeof(image) / sizeof(*input))
+       FOREACH(k, sizeof(*input) / sizeof(**input))
+     {
+       layer0[0][j + PADDING][k + PADDING] = (input[j][k] - mean) / std;
+     }
+   }
+</code></pre>
+  </li>
+</ul>
 
 <h2 id="initial-the-strcuture-of-lenet5">Initial the strcuture of LeNet5</h2>
 
@@ -257,6 +282,41 @@
 </ul>
 
 <h4 id="c3-layer">C3 Layer</h4>
+<p>This is the third layer of LeNet5, a convolutional layer</p>
+<ul>
+  <li>weight2_3: LAYER2=6 is the input matrix’s dimentional from S2 Layer. LAYER3=16 is the output matrix’s dimensional from C3 layer. The kernels at this layer is (LAYER3=16, LENGTH_KERNEL = 5,5).</li>
+  <li>bias2_3: The bias for the 16 kerners at layer 3.</li>
+  <li>Not all feature maps from S2 will be used in C3.</li>
+</ul>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/assets/img/blogs/2023/LeNet5_C/throw_connection_lenet5.PNG" width="500">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">[2] Not all S2's feature maps will be used in C3</div>
+</center>
+
+<ul>
+  <li><strong><em>The implementation does not implement the above connenction throwing.</em></strong></li>
+</ul>
+
+<h2 id="the-data-structure-of-input-and-output-during-learning">The data structure of input and output during learning</h2>
+<pre><code class="language-C">  typedef struct Feature
+  {
+    double input[INPUT][LENGTH_FEATURE0][LENGTH_FEATURE0];
+    double layer1[LAYER1][LENGTH_FEATURE1][LENGTH_FEATURE1];
+    double layer2[LAYER2][LENGTH_FEATURE2][LENGTH_FEATURE2];
+    double layer3[LAYER3][LENGTH_FEATURE3][LENGTH_FEATURE3];
+    double layer4[LAYER4][LENGTH_FEATURE4][LENGTH_FEATURE4];
+    double layer5[LAYER5][LENGTH_FEATURE5][LENGTH_FEATURE5];
+    double output[OUTPUT];
+  }Feature;
+</code></pre>
+<ul>
+  <li>The INPUT is the channel of input 2-dimensional matrixs. The input is 3-dimensional matrix.</li>
+</ul>
 
 <h2 id="reference">Reference</h2>
 <div id="refer-anchor-1"></div>
@@ -264,6 +324,13 @@
 <ul>
   <li>[1] https://zhuanlan.zhihu.com/p/41736894</li>
 </ul>
+
+<div id="refer-anchor-1"></div>
+
+<ul>
+  <li>[2] https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=726791</li>
+</ul>
+
 
     </div>
   </article>
