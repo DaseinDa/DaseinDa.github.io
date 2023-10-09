@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://daseinda.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://daseinda.github.io//" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-07T23:16:10+00:00</updated><id>https://daseinda.github.io//feed.xml</id><title type="html">blank</title><subtitle>A lifelong learner interested in the modern world.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://daseinda.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://daseinda.github.io//" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-09T11:52:00+00:00</updated><id>https://daseinda.github.io//feed.xml</id><title type="html">blank</title><subtitle>A lifelong learner interested in the modern world.
 </subtitle><entry><title type="html">The pure C implementation for LeNet5</title><link href="https://daseinda.github.io//blog/2023/lenet5-c/" rel="alternate" type="text/html" title="The pure C implementation for LeNet5" /><published>2023-06-20T22:32:51+00:00</published><updated>2023-06-20T22:32:51+00:00</updated><id>https://daseinda.github.io//blog/2023/lenet5-c</id><content type="html" xml:base="https://daseinda.github.io//blog/2023/lenet5-c/"><![CDATA[<h2 id="the-visualization-of-lenet5-structure">The visualization of LeNet5 structure</h2>
 
 <!-- <img src="/assets/img/blogs/2023/LeNet5_C/LeNet5_Structure.jpg"  width="500">  -->
@@ -52,8 +52,26 @@
   <li>The output[y] is the number of feature map for input image’s x channel. For each image’s x channel, the first (for) loop plus each x convolution computation operation to the output[y], and achieve the convolution performance.</li>
 </ul>
 
-<h2 id="preprocessing-load_input">PreProcessing load_input</h2>
+<h2 id="convolution-backward-implementation">Convolution Backward Implementation</h2>
+<pre><code class="language-C">  #define CONVOLUTION_BACKWARD(input,inerror,outerror,weight,wd,bd,actiongrad)\
+  {																			\
+    for (int x = 0; x &lt; GETLENGTH(weight); ++x)								\
+      for (int y = 0; y &lt; GETLENGTH(*weight); ++y)						\
+        CONVOLUTE_FULL(outerror[y], inerror[x], weight[x][y]);			\
+    FOREACH(i, GETCOUNT(inerror))											\
+      ((double *)inerror)[i] *= actiongrad(((double *)input)[i]);			\
+    FOREACH(j, GETLENGTH(outerror))											\
+      FOREACH(i, GETCOUNT(outerror[j]))									\
+      bd[j] += ((double *)outerror[j])[i];								\
+    for (int x = 0; x &lt; GETLENGTH(weight); ++x)								\
+      for (int y = 0; y &lt; GETLENGTH(*weight); ++y)						\
+        CONVOLUTE_VALID(input[x], wd[x][y], outerror[y]);				\
+  }
+</code></pre>
 <ul>
+  <li>The backward of convolution is indeed the gradient calculation iterated from output layer to input layer, each layer’s gradient depends on the next layer gradient and the layer’s current parameters. From the implementation, we can figure out one shortage of resnet, which originally should make it competitive to Transformer in my opinion. That the res-connection-previous-layer’s gradient in resnet should participate into the res-connection-current-layer’s gradient parameter update on numerial/optimization/mathematical aspect. Due to the limitation of python engineering implementation, such gradient-connection are omitted, and the previous input value simply takes part in the current input. I also would not intend to discuss such missing feature for res-connection at the present thesis work due to large work-load I have had. But may research it in the future spare time.
+    <h2 id="preprocessing-load_input">PreProcessing load_input</h2>
+  </li>
   <li>Add padding =2 to input matrix, the output matrix is N = 28+2*2=32. Achieve by create a layer0 matrix with required size of 32,32, then fill in image’s data from 3 to 30(number group from 2 to 29)</li>
   <li>
     <p>Standardlization and normalization</p>
