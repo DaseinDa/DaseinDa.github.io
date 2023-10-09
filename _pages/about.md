@@ -2,7 +2,7 @@
 layout: about #使用 about.html的模板
 title: about
 permalink: /
-subtitle: Master student at KTH EECS College & TU Berlin Fakultät IV(Under EIT Digital's Scholarship)
+subtitle: Master student at KTH EECS College & TU Berlin Fakultät IV(under EIT Digital's Scholarship)
 
 
 profile:
