@@ -21,7 +21,7 @@ social: true  # includes social icons at the bottom of the page
 I am a double-degree master student at **TU Berlin(Berlin, Germany) & KTH(Stockholm, Sweden)**, majoring in  ICT (Information and Communication Technology) & EE(Electrical Engineering). I am pursuing my master thesis internship for federated learning's hardware security enhancement techniques at Trustworthy & Applied Cryptography Lab.
 
 ## Currently
-I am currently working on secure learning. I like discussing potentially feaseible methods for practical problems with nice and talented people, feel free to reach out! I am working on Intel SGX
+I am currently working on secure learning. I like discussing potentially feasible methods for practical problems with nice and talented people, from diverse backgrounds, feel free to reach out! I am working on Intel SGX
 development for a large hybrid-secure platform project concentrating on cloud secure computation. **I am looking for PhD/RA/Research Intern opportunities, working on Secure machine learning/Trustworthy AI/System security/Optimization/Applied cryptography, if you are interested in working with me, feel free to reach out!**
 ## Recent Work/Research Experience
 
