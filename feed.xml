@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://daseinda.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://daseinda.github.io//" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-10T11:11:45+00:00</updated><id>https://daseinda.github.io//feed.xml</id><title type="html">blank</title><subtitle>A lifelong learner interested in the modern world.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://daseinda.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://daseinda.github.io//" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-10T12:22:36+00:00</updated><id>https://daseinda.github.io//feed.xml</id><title type="html">blank</title><subtitle>A lifelong learner interested in the modern world.
 </subtitle><entry><title type="html">The pure C implementation for LeNet5</title><link href="https://daseinda.github.io//blog/2023/lenet5-c/" rel="alternate" type="text/html" title="The pure C implementation for LeNet5" /><published>2023-06-20T22:32:51+00:00</published><updated>2023-06-20T22:32:51+00:00</updated><id>https://daseinda.github.io//blog/2023/lenet5-c</id><content type="html" xml:base="https://daseinda.github.io//blog/2023/lenet5-c/"><![CDATA[<h2 id="the-visualization-of-lenet5-structure">The visualization of LeNet5 structure</h2>
 
 <!-- <img src="/assets/img/blogs/2023/LeNet5_C/LeNet5_Structure.jpg"  width="500">  -->
@@ -70,12 +70,22 @@
 </code></pre>
 <ul>
   <li>The backward of convolution is indeed the gradient calculation iterated from output layer to input layer, each layer’s gradient depends on the next layer gradient and the layer’s current parameters. From the implementation, we can figure out one shortage of resnet, which originally should make it competitive to Transformer in my opinion. That the res-connection-previous-layer’s gradient in resnet should participate into the res-connection-current-layer’s gradient parameter update on numerial/optimization/mathematical aspect. Due to the limitation of python engineering implementation, such gradient-connection are omitted, and the previous input value simply takes part in the current input. I also would not intend to discuss such missing feature for res-connection at the present thesis work due to the large work-load I have had. But may research it in the future spare time.</li>
-  <li>Assume layer $n^{th}$, the kernel size is m*m, each output $y_{i}$ calculation would update the elements kernel $\omega_{1}$ - $\omega_{m^{2}}$. L is the loss.
-\(\frac{\partial{L}}{\partial{\omega}}\)</li>
+  <li>Assume a conv layer in the model, the kernel size is m*m, each output off this layer \(y_{1}.....y_{n}\), would update this layer kernel’s parameters \(\omega_{1}\) …… \(\omega_{m^{2}}\). L is the loss.</li>
 </ul>
 
-<h2 id="pooling-backward">Pooling Backward</h2>
+\[\frac{\partial{L}}{\partial{\omega_{i}}} =\frac{\partial{L}}{\partial{y_{1}}}*\frac{\partial{y_{1}}}{\partial{\omega_{i}}}+......\frac{\partial{L}}{\partial{y_{n}}}*\frac{\partial{y_{n}}}{\partial{\omega_{i}}}\]
 
+<p>For example:</p>
+
+\[\frac{\partial{L}}{\partial{\omega_{1}}} =\frac{\partial{L}}{\partial{y_{1}}}*\frac{\partial{y_{1}}}{\partial{\omega_{1}}}+......\frac{\partial{L}}{\partial{y_{n}}}*\frac{\partial{y_{n}}}{\partial{\omega_{1}}}\]
+
+\[\frac{\partial{L}}{\partial{\omega_{2}}} =\frac{\partial{L}}{\partial{y_{1}}}*\frac{\partial{y_{1}}}{\partial{\omega_{2}}}+......\frac{\partial{L}}{\partial{y_{n}}}*\frac{\partial{y_{n}}}{\partial{\omega_{2}}}\]
+
+<p>……</p>
+
+\[\frac{\partial{L}}{\partial{\omega_{m*m}}} =\frac{\partial{L}}{\partial{y_{1}}}*\frac{\partial{y_{1}}}{\partial{\omega_{m*m}}}+......\frac{\partial{L}}{\partial{y_{n}}}*\frac{\partial{y_{n}}}{\partial{\omega_{m*m}}}\]
+
+<h2 id="pooling-backward-propagation-implementation">Pooling Backward Propagation Implementation</h2>
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/assets/img/blogs/2023/LeNet5_C/maxpool_backward.png" width="500" />
@@ -195,7 +205,12 @@
   }Feature;
 </code></pre>
 <ul>
-  <li>The INPUT is the channel of input 2-dimensional matrixs. The input is 3-dimensional matrix.</li>
+  <li>
+    <p>The INPUT is the channel of input 2-dimensional matrixs. The input is 3-dimensional matrix.</p>
+  </li>
+  <li>
+    <p>The Feature data structure is the gradient versus Loss for each parameter in the model.</p>
+  </li>
 </ul>
 
 <h2 id="reference">Reference</h2>
