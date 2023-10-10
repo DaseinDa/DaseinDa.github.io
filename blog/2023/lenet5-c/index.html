@@ -297,6 +297,17 @@
 
 \[\frac{\partial{L}}{\partial{b_{i}}} = \frac{\partial{L}}{\partial{y_{i}}}\]
 
+<h2 id="activation-backward">Activation backward</h2>
+
+<ul>
+  <li>
+    <p>There is a interesting phenomenon for ReLU activation function, that though it is non-linear, if justify is not needed. Because the \(\frac{\partial{ReLU}}{\partial{y}} * \frac{\partial{y}}{\partial{\omega_{i}}}} = \frac{\partial{y}}{\partial{\omega_{i}}}} = x_{i}\)</p>
+  </li>
+  <li>
+    <p><strong><em>I am wondering during the backward process, if “if-justify” operation is implemented for other types of non-linear activation functions implement, or they use the output directly, or they do not need it just like ReLU.</em></strong></p>
+  </li>
+</ul>
+
 <h2 id="pooling-backward-propagation-implementation">Pooling Backward Propagation Implementation</h2>
 <center>
     <img style="border-radius: 0.3125em;
