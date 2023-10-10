@@ -75,7 +75,7 @@
   type: time_table
   contents:
     - title: Cyber security and applied cryptography Research Internship Student
-      institution: Trustworthy and applied cryptography lab, Huawei Munich Research Center
+      institution: Trustworthy and applied cryptography lab, Munich Research Center
       year: June 2023 - Dec 2023
       description:
           - Implement Intel SGX and MPC(Multi-Party Computation)interfaces for a hybrid secure computing platform project, focus on mahcine learning.
