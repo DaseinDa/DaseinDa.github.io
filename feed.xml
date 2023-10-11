@@ -1,5 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://daseinda.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://daseinda.github.io//" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-10T15:32:56+00:00</updated><id>https://daseinda.github.io//feed.xml</id><title type="html">blank</title><subtitle>A lifelong learner interested in the modern world.
-</subtitle><entry><title type="html">The pure C implementation for LeNet5</title><link href="https://daseinda.github.io//blog/2023/lenet5-c/" rel="alternate" type="text/html" title="The pure C implementation for LeNet5" /><published>2023-06-20T22:32:51+00:00</published><updated>2023-06-20T22:32:51+00:00</updated><id>https://daseinda.github.io//blog/2023/lenet5-c</id><content type="html" xml:base="https://daseinda.github.io//blog/2023/lenet5-c/"><![CDATA[<h2 id="the-visualization-of-lenet5-structure">The visualization of LeNet5 structure</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://daseinda.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://daseinda.github.io//" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-11T15:19:34+00:00</updated><id>https://daseinda.github.io//feed.xml</id><title type="html">blank</title><subtitle>A lifelong learner interested in the modern world.
+</subtitle><entry><title type="html">The pure C implementation for Alexnet</title><link href="https://daseinda.github.io//blog/2023/alexnet-c/" rel="alternate" type="text/html" title="The pure C implementation for Alexnet" /><published>2023-10-10T22:32:51+00:00</published><updated>2023-10-10T22:32:51+00:00</updated><id>https://daseinda.github.io//blog/2023/alexnet-c</id><content type="html" xml:base="https://daseinda.github.io//blog/2023/alexnet-c/"><![CDATA[<p>I am recording my Alexnet C implementation for Intel SGX usage. Because Intel SGX interfaces can only be written in pure C, even C++ would not work. Assume the dataset is MNIST, the size of the black-white image matrix is (1,28,28). The model parameters matrix number group used in the implementation is 3-dimensional. There are 4-dimensional number group in input/output matrices to record the products during the learning process. Note that each channel of the input matrix, owns an independent group of kernel, but each channel’s kernel parameter update share the same total final output of this layer.</p>
+
+<p>Since much detailed operations such as Convolution/Backward/Activation/Pool have been explained on last blog: The pure C implementation for LeNet5. These would be omitted here.</p>
+
+<h2 id="the-visualization-of-alexnet-structure">The visualization of Alexnet structure</h2>
+
+<!-- <img src="/assets/img/blogs/2023/LeNet5_C/LeNet5_Structure.jpg"  width="500">  -->
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/assets/img/blogs/2023/AlexNet_C/alexnet_structure.jpg" width="500" />
+    <br />
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">[1] The structure of AlexNet</div>
+</center>
+
+<h2 id="alexnet-strcuture-c-definition">AlexNet strcuture C definition</h2>
+<pre><code class="language-C">typedef struct AlexNet
+{
+	double weight1[INPUT][LAYER1][LENGTH_KERNEL][LENGTH_KERNEL];//Layer1 kernel
+	double weight2[LAYER1][LAYER2][LENGTH_KERNEL][LENGTH_KERNEL];//Layer2 Kernel
+	double weight3[LAYER2][LAYER3][LENGTH_KERNEL][LENGTH_KERNEL];//Layer3 Kernel
+	//double weight5_6[LAYER5 * LENGTH_FEATURE5 * LENGTH_FEATURE5][OUTPUT];
+	double weight4[LAYER3][LAYER4][LENGTH_KERNEL][LENGTH_KERNEL];//Layer4 Kernel
+	double weight5[LAYER4][LAYER5][LENGTH_KERNEL][LENGTH_KERNEL];//Layer5 Kernel
+
+	double fc1[LAYER5*LENGTH_FEATURE5_2*LENGTH_FEATURE5_2][FC1_OUTPUT];
+	double fc2[FC1_OUTPUT][FC2_OUTPUT];
+	double fc3[FC2_OUTPUT][FC3_OUTPUT];
+
+	double bias1[LAYER1];
+	double bias2[LAYER2];
+	double bias3[LAYER3];
+	double bias4[LAYER4];
+	double bias5[LAYER5];
+
+	double bias_fc1[LAYER3];
+	double bias_fc2[LAYER4];
+	double bias_fc3[LAYER5];
+
+}AlexNet;
+</code></pre>
+
+<h2 id="the-data-structure-of-input-and-output-during-learning">The data structure of input and output during learning</h2>
+<pre><code class="language-C">    typedef struct Feature
+    {
+        double input[INPUT][LENGTH_FEATURE0][LENGTH_FEATURE0];
+
+        double layer1_conv[LAYER1][LENGTH_FEATURE1_1][LENGTH_FEATURE1_1];
+        double layer1_pool[LAYER1][LENGTH_FEATURE1_2][LENGTH_FEATURE1_2];
+
+        double layer2_conv[LAYER2][LENGTH_FEATURE2_1][LENGTH_FEATURE2_1];
+        double layer2_pool[LAYER3][LENGTH_FEATURE2_2][LENGTH_FEATURE2_2];
+
+        double layer3_conv[LAYER4][LENGTH_FEATURE3_1][LENGTH_FEATURE3_1];
+        
+        double layer4_conv[LAYER5][LENGTH_FEATURE4_1][LENGTH_FEATURE4_1];
+
+
+        double layer5_conv[LAYER5][LENGTH_FEATURE5_1][LENGTH_FEATURE5_1];
+        double layer5_pool[LAYER5][LENGTH_FEATURE5_2][LENGTH_FEATURE5_2];
+
+        double fc1[FC1_OUTPUT];
+        double fc2[FC2_OUTPUT];
+        double fc3[FC3_OUTPUT];
+
+        double output[OUTPUT];
+    }Feature;
+</code></pre>]]></content><author><name></name></author><category term="CNN_C" /><summary type="html"><![CDATA[The pure C implementation for Alexnet]]></summary></entry><entry><title type="html">The pure C implementation for LeNet5</title><link href="https://daseinda.github.io//blog/2023/lenet5-c/" rel="alternate" type="text/html" title="The pure C implementation for LeNet5" /><published>2023-06-20T22:32:51+00:00</published><updated>2023-06-20T22:32:51+00:00</updated><id>https://daseinda.github.io//blog/2023/lenet5-c</id><content type="html" xml:base="https://daseinda.github.io//blog/2023/lenet5-c/"><![CDATA[<h2 id="the-visualization-of-lenet5-structure">The visualization of LeNet5 structure</h2>
 
 <!-- <img src="/assets/img/blogs/2023/LeNet5_C/LeNet5_Structure.jpg"  width="500">  -->
 
@@ -133,7 +202,7 @@
 
 <ul>
   <li>
-    <p>There is a interesting phenomenon for ReLU activation function, that though it is non-linear, if justify is not needed. Because the \(\frac{\partial{ReLU}}{\partial{y}} * \frac{\partial{y}}{\partial{\omega_{i}}}} = \frac{\partial{y}}{\partial{\omega_{i}}}} = x_{i}\)</p>
+    <p>There is a interesting phenomenon for ReLU activation function, that though it is non-linear, if justify is not needed. Because the \(\frac{\partial{ReLU}}{\partial{y}} * \frac{\partial{y}}{\partial{\omega_{i}}} = \frac{\partial{y}}{\partial{\omega_{i}}} = x_{i}\)</p>
   </li>
   <li>
     <p><strong><em>I am wondering during the backward process, if “if-justify” operation is implemented for other types of non-linear activation functions implement, or they use the output directly, or they do not need it just like ReLU.</em></strong></p>
@@ -165,6 +234,40 @@
     padding: 2px;">Average Pooling Backward Mechanism</div>
 </center>
 
+<h2 id="softmax">Softmax</h2>
+
+<pre><code class="language-C">  static inline void softmax(double input[OUTPUT], double loss[OUTPUT], int label, int count)
+  {
+    double inner = 0;
+    for (int i = 0; i &lt; count; ++i)
+    {
+      double res = 0;
+      for (int j = 0; j &lt; count; ++j)
+      {
+        res += exp(input[j] - input[i]);
+      }
+      loss[i] = 1. / res;
+      inner -= loss[i] * loss[i];
+    }
+    inner += loss[label];
+    for (int i = 0; i &lt; count; ++i)
+    {
+      loss[i] *= (i == label) - loss[i] - inner;
+    }
+  }
+</code></pre>
+
+\[S_{i}=\frac{e^{y_{i}}}{\sum_{j} e^{y_{j}}} = \frac{1}{\sum_{j} e^{y_{j}-y_{i}}}\]
+
+<ul>
+  <li>loss is \(S_{i}\)</li>
+</ul>
+
+<h2 id="softmax-backward">Softmax Backward</h2>
+
+\[S_{i}=\frac{e^{y_{i}}}{\sum_{j} e^{y_{j}}}\]
+
+<p>\(\frac{\partial{L}}{\partial{y_{i}}} = \frac{\partial{L}}{\partial{Softmax}} * \frac{\partial{Softmax}}{\partial{y_{i}}}\)</p>
 <h2 id="preprocessing-load_input">PreProcessing load_input</h2>
 <ul>
   <li>Add padding =2 to input matrix, the output matrix is N = 28+2*2=32. Achieve by create a layer0 matrix with required size of 32,32, then fill in image’s data from 3 to 30(number group from 2 to 29)</li>

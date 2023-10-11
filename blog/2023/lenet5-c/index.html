@@ -301,7 +301,7 @@
 
 <ul>
   <li>
-    <p>There is a interesting phenomenon for ReLU activation function, that though it is non-linear, if justify is not needed. Because the \(\frac{\partial{ReLU}}{\partial{y}} * \frac{\partial{y}}{\partial{\omega_{i}}}} = \frac{\partial{y}}{\partial{\omega_{i}}}} = x_{i}\)</p>
+    <p>There is a interesting phenomenon for ReLU activation function, that though it is non-linear, if justify is not needed. Because the \(\frac{\partial{ReLU}}{\partial{y}} * \frac{\partial{y}}{\partial{\omega_{i}}} = \frac{\partial{y}}{\partial{\omega_{i}}} = x_{i}\)</p>
   </li>
   <li>
     <p><strong><em>I am wondering during the backward process, if “if-justify” operation is implemented for other types of non-linear activation functions implement, or they use the output directly, or they do not need it just like ReLU.</em></strong></p>
@@ -333,6 +333,40 @@
     padding: 2px;">Average Pooling Backward Mechanism</div>
 </center>
 
+<h2 id="softmax">Softmax</h2>
+
+<pre><code class="language-C">  static inline void softmax(double input[OUTPUT], double loss[OUTPUT], int label, int count)
+  {
+    double inner = 0;
+    for (int i = 0; i &lt; count; ++i)
+    {
+      double res = 0;
+      for (int j = 0; j &lt; count; ++j)
+      {
+        res += exp(input[j] - input[i]);
+      }
+      loss[i] = 1. / res;
+      inner -= loss[i] * loss[i];
+    }
+    inner += loss[label];
+    for (int i = 0; i &lt; count; ++i)
+    {
+      loss[i] *= (i == label) - loss[i] - inner;
+    }
+  }
+</code></pre>
+
+\[S_{i}=\frac{e^{y_{i}}}{\sum_{j} e^{y_{j}}} = \frac{1}{\sum_{j} e^{y_{j}-y_{i}}}\]
+
+<ul>
+  <li>loss is \(S_{i}\)</li>
+</ul>
+
+<h2 id="softmax-backward">Softmax Backward</h2>
+
+\[S_{i}=\frac{e^{y_{i}}}{\sum_{j} e^{y_{j}}}\]
+
+<p>\(\frac{\partial{L}}{\partial{y_{i}}} = \frac{\partial{L}}{\partial{Softmax}} * \frac{\partial{Softmax}}{\partial{y_{i}}}\)</p>
 <h2 id="preprocessing-load_input">PreProcessing load_input</h2>
 <ul>
   <li>Add padding =2 to input matrix, the output matrix is N = 28+2*2=32. Achieve by create a layer0 matrix with required size of 32,32, then fill in image’s data from 3 to 30(number group from 2 to 29)</li>
@@ -453,6 +487,22 @@
     </div>
   </article>
 
+
+  
+    
+    <br>
+    <hr>
+    <br>
+    <ul class="list-disc pl-8"></ul>
+
+    <!-- Adds related posts to the end of an article -->
+    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/alexnet-c/">The pure C implementation for Alexnet</a>
+  </li>
 
 </div>
 
