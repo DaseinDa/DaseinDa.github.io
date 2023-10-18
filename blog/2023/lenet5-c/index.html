@@ -366,7 +366,8 @@
 
 \[S_{i}=\frac{e^{y_{i}}}{\sum_{j} e^{y_{j}}}\]
 
-<p>\(\frac{\partial{L}}{\partial{y_{i}}} = \frac{\partial{L}}{\partial{Softmax}} * \frac{\partial{Softmax}}{\partial{y_{i}}}\)</p>
+\[\frac{\partial{L}}{\partial{y_{i}}} = \frac{\partial{L}}{\partial{Softmax}} * \frac{\partial{Softmax}}{\partial{y_{i}}}\]
+
 <h2 id="preprocessing-load_input">PreProcessing load_input</h2>
 <ul>
   <li>Add padding =2 to input matrix, the output matrix is N = 28+2*2=32. Achieve by create a layer0 matrix with required size of 32,32, then fill in image’s data from 3 to 30(number group from 2 to 29)</li>

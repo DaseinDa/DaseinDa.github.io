@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://daseinda.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://daseinda.github.io//" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-14T18:02:41+00:00</updated><id>https://daseinda.github.io//feed.xml</id><title type="html">blank</title><subtitle>A lifelong learner interested in the modern world.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://daseinda.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://daseinda.github.io//" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-18T15:19:23+00:00</updated><id>https://daseinda.github.io//feed.xml</id><title type="html">blank</title><subtitle>A lifelong learner interested in the modern world.
 </subtitle><entry><title type="html">The pure C implementation for Alexnet</title><link href="https://daseinda.github.io//blog/2023/alexnet-c/" rel="alternate" type="text/html" title="The pure C implementation for Alexnet" /><published>2023-10-10T22:32:51+00:00</published><updated>2023-10-10T22:32:51+00:00</updated><id>https://daseinda.github.io//blog/2023/alexnet-c</id><content type="html" xml:base="https://daseinda.github.io//blog/2023/alexnet-c/"><![CDATA[<p>I am recording my Alexnet C implementation for Intel SGX usage. Because Intel SGX interfaces can only be written in pure C, even C++ would not work. Assume the dataset is MNIST, the size of the black-white image matrix is (1,28,28). The model parameters matrix number group used in the implementation is 3-dimensional. There are 4-dimensional number group in input/output matrices to record the products during the learning process. Note that each channel of the input matrix, owns an independent group of kernel, but each channel’s kernel parameter update share the same total final output of this layer.</p>
 
 <p>Since much detailed operations such as Convolution/Backward/Activation/Pool have been explained on last blog: The pure C implementation for LeNet5. These would be omitted here.</p>
@@ -68,7 +68,104 @@
 
         double output[OUTPUT];
     }Feature;
-</code></pre>]]></content><author><name></name></author><category term="CNN_C" /><summary type="html"><![CDATA[The pure C implementation for Alexnet]]></summary></entry><entry><title type="html">The pure C implementation for LeNet5</title><link href="https://daseinda.github.io//blog/2023/lenet5-c/" rel="alternate" type="text/html" title="The pure C implementation for LeNet5" /><published>2023-06-20T22:32:51+00:00</published><updated>2023-06-20T22:32:51+00:00</updated><id>https://daseinda.github.io//blog/2023/lenet5-c</id><content type="html" xml:base="https://daseinda.github.io//blog/2023/lenet5-c/"><![CDATA[<h2 id="the-visualization-of-lenet5-structure">The visualization of LeNet5 structure</h2>
+</code></pre>
+
+<h2 id="the-header-pre-defined-variables-for-alexnets-hyper-parameters">The header pre-defined variables for Alexnet’s hyper-parameters</h2>
+<pre><code class="language-C">    #pragma once
+    #define LENGTH_KERNEL	3
+    #define MAXPOOL_SIZE 2
+    #define PADDING 1
+    #define LENGTH_FEATURE0	28
+    #define LENGTH_FEATURE1_1	(LENGTH_FEATURE0 - LENGTH_KERNEL + 2*PADDING+1) //28-3+2+1 -&gt;28*28
+    #define LENGTH_FEATURE1_2	(LENGTH_FEATURE1_1/2) //14*14
+    #define LENGTH_FEATURE2_1	(LENGTH_FEATURE1_2 - LENGTH_KERNEL +2*PADDING + 1) //14-3+2+1=14
+    #define	LENGTH_FEATURE2_2	(LENGTH_FEATURE2_1/2)  //7*7
+    #define LENGTH_FEATURE3_1	(LENGTH_FEATURE2_2 - LENGTH_KERNEL +2*PADDING+ 1) //7*7
+    #define LENGTH_FEATURE4_1	(LENGTH_FEATURE3_1 - LENGTH_KERNEL +2*PADDING+ 1)//7*7
+    #define MAXPOOL5_2_KERNEL 3
+    #define MAXPOOL5_2_STRIDE 2
+
+    #define LENGTH_FEATURE5_1	(LENGTH_FEATURE4_1 - LENGTH_KERNEL+2*PADDING+ 1)	//7*7
+    #define LENGTH_FEATURE5_2	((LENGTH_FEATURE5_1 - MAXPOOL5_2_KERNEL)/MAXPOOL5_2_STRIDE+ 1) //(7-3)/2 +1 = 3 no padding
+
+    #define FC1_OUTPUT	1024
+    #define FC2_OUTPUT	512
+    #define FC3_OUTPUT	10
+
+
+    #define INPUT			1
+    #define LAYER1			32
+    #define LAYER2			64
+    #define LAYER3			128
+    #define LAYER4			256
+    #define LAYER5			256
+
+    #define OUTPUT          10
+
+    #define ALPHA 0.5
+
+
+    typedef unsigned char uint8;
+    typedef uint8 image[28][28];
+
+</code></pre>
+
+<h2 id="forward">Forward</h2>
+<pre><code class="language-C">static void forward(AlexNet *alexnet, double(*action)(double))
+{
+	CONVOLUTION_FORWARD(features.input, features.layer1_conv, alexnet-&gt;weight1, alexnet-&gt;bias1, action);
+	SUBSAMP_MAX_FORWARD(features.layer1_conv, features.layer1_pool);
+
+	CONVOLUTION_FORWARD(features.layer1_pool, features.layer2_conv, alexnet-&gt;weight2, alexnet-&gt;bias2, action);
+	SUBSAMP_MAX_FORWARD(features.layer2_conv, features.layer2_pool);
+
+	CONVOLUTION_FORWARD(features.layer2_pool, features.layer3_conv, alexnet-&gt;weight3, alexnet-&gt;bias3, action);
+	
+	CONVOLUTION_FORWARD(features.layer3_conv, features.layer4_conv, alexnet-&gt;weight4, alexnet-&gt;bias4, action);
+
+	CONVOLUTION_FORWARD(features.layer4_conv, features.layer5_conv, alexnet-&gt;weight5, alexnet-&gt;bias5, action);
+	SUBSAMP_MAX_FORWARD(features.layer5_conv, features.layer5_pool);
+
+	// Matrix_FC(features-&gt;layer5_pool, features-&gt;fc1, alexnet-&gt;fc1);
+	// FC(features-&gt;fc1, features-&gt;fc2, alexnet-&gt;fc2);
+	// FC(features-&gt;fc2, features-&gt;fc3, alexnet-&gt;fc3);
+	DOT_PRODUCT_FORWARD(features.layer5_pool, features.fc1, alexnet-&gt;fc1, alexnet-&gt;bias_fc1, action);
+	DOT_PRODUCT_FORWARD(features.fc1, features.fc2, alexnet-&gt;fc2, alexnet-&gt;bias_fc2, action);
+	DOT_PRODUCT_FORWARD(features.fc2, features.output, alexnet-&gt;fc3, alexnet-&gt;bias_fc3, action);
+	// CONVOLUTION_FORWARD(features-&gt;layer2, features-&gt;layer3, lenet-&gt;weight2_3, lenet-&gt;bias2_3, action);
+	// SUBSAMP_MAX_FORWARD(features-&gt;layer3, features-&gt;layer4);
+	// CONVOLUTION_FORWARD(features-&gt;layer4, features-&gt;layer5, lenet-&gt;weight4_5, lenet-&gt;bias4_5, action);
+	// DOT_PRODUCT_FORWARD(features-&gt;layer5, features-&gt;output, lenet-&gt;weight5_6, lenet-&gt;bias5_6, action);
+}
+</code></pre>
+<h2 id="backward">Backward</h2>
+
+<pre><code class="language-C">    static void backward(AlexNet *alexnet, double(*actiongrad)(double))
+    {
+        //printf("Here is Backward\n");
+        DOT_PRODUCT_BACKWARD(features.fc2, errors.fc2, errors.output, alexnet-&gt;fc3, deltas.fc3, deltas.bias_fc3, actiongrad);
+        DOT_PRODUCT_BACKWARD(features.fc1, errors.fc1, errors.fc2, alexnet-&gt;fc2, deltas.fc2, deltas.bias_fc2, actiongrad);
+        DOT_PRODUCT_BACKWARD(features.layer5_pool, errors.layer5_pool, errors.fc1,alexnet-&gt;fc1, deltas.fc1, deltas.bias_fc1, actiongrad)
+        
+        SUBSAMP_MAX_BACKWARD(features.layer5_conv, errors.layer5_conv, errors.layer5_pool);
+        
+        CONVOLUTION_BACKWARD(features.layer4_conv, errors.layer4_conv, errors.layer5_conv, alexnet-&gt;weight5, deltas.weight5, deltas.bias5, actiongrad);
+
+        CONVOLUTION_BACKWARD(features.layer3_conv, errors.layer3_conv, errors.layer4_conv, alexnet-&gt;weight4, deltas.weight4, deltas.bias4, actiongrad);
+
+        CONVOLUTION_BACKWARD(features.layer2_pool, errors.layer2_conv, errors.layer3_conv, alexnet-&gt;weight3, deltas.weight3, deltas.bias3, actiongrad);
+        SUBSAMP_MAX_BACKWARD(features.layer2_conv, errors.layer2_conv, errors.layer2_pool);
+
+        CONVOLUTION_BACKWARD(features.layer1_pool, errors.layer1_pool, errors.layer2_conv, alexnet-&gt;weight2, deltas.weight2, deltas.bias2, actiongrad);
+        SUBSAMP_MAX_BACKWARD(features.layer1_conv, errors.layer1_conv, errors.layer1_pool);
+
+        CONVOLUTION_BACKWARD(features.input, errors.input, errors.layer1_conv, alexnet-&gt;weight1, deltas.weight1, deltas.bias1, actiongrad);
+    }
+
+
+</code></pre>
+
+<p>Because of the memory limitation, I eliminate the buffer[ ] here, which can also save the execution time and resources, but decreases the code readability. Maybe also can eliminate it in LeNet-5, when necessary.</p>]]></content><author><name></name></author><category term="CNN_C" /><summary type="html"><![CDATA[The pure C implementation for Alexnet]]></summary></entry><entry><title type="html">The pure C implementation for LeNet5</title><link href="https://daseinda.github.io//blog/2023/lenet5-c/" rel="alternate" type="text/html" title="The pure C implementation for LeNet5" /><published>2023-06-20T22:32:51+00:00</published><updated>2023-06-20T22:32:51+00:00</updated><id>https://daseinda.github.io//blog/2023/lenet5-c</id><content type="html" xml:base="https://daseinda.github.io//blog/2023/lenet5-c/"><![CDATA[<h2 id="the-visualization-of-lenet5-structure">The visualization of LeNet5 structure</h2>
 
 <!-- <img src="/assets/img/blogs/2023/LeNet5_C/LeNet5_Structure.jpg"  width="500">  -->
 
@@ -267,7 +364,8 @@
 
 \[S_{i}=\frac{e^{y_{i}}}{\sum_{j} e^{y_{j}}}\]
 
-<p>\(\frac{\partial{L}}{\partial{y_{i}}} = \frac{\partial{L}}{\partial{Softmax}} * \frac{\partial{Softmax}}{\partial{y_{i}}}\)</p>
+\[\frac{\partial{L}}{\partial{y_{i}}} = \frac{\partial{L}}{\partial{Softmax}} * \frac{\partial{Softmax}}{\partial{y_{i}}}\]
+
 <h2 id="preprocessing-load_input">PreProcessing load_input</h2>
 <ul>
   <li>Add padding =2 to input matrix, the output matrix is N = 28+2*2=32. Achieve by create a layer0 matrix with required size of 32,32, then fill in image’s data from 3 to 30(number group from 2 to 29)</li>
