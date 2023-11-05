@@ -81,6 +81,14 @@
               {%- endif %}
 
 
+              <li class="nav-item {% if page.permalink == '/' %}active{% endif %}">
+                <a class="nav-link" href="{{ '/misc/' | relative_url }}">misc
+                  {%- if page.permalink == '/misc/' -%}
+                  <span class="sr-only">(current)</span>
+                  {%- endif -%}
+                </a>
+              </li>
+
 
 
 
