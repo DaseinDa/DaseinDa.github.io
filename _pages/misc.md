@@ -37,6 +37,6 @@ subtitle: My Life
 
 {% include audio.html src="/assets/audio/芒种.mp3" %}
 
-<audio controls>
+<video style="width= 50%; height=50%; object-fit: fill" controls="controls">
   <source src="/assets/video/MoonRiver.mp4" type="video/mp4">
-</audio>
+</video>
