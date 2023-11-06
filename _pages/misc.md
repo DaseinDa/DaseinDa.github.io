@@ -38,11 +38,20 @@ subtitle: My Life
   <source src="/assets/audio/GulfOfAlaska.mp3" type="audio/mp3">
 </audio>
 
+<h3>Later(后来)</h3>
+<audio controls>
+  <source src="/assets/audio/后来.mp3" type="audio/mp3">
+</audio>
+
 <h3>芒种(Miscanthus)</h3>
 <audio controls>
   <source src="/assets/audio/芒种.mp3" type="audio/mp3">
 </audio>
 
+<h3>Faded</h3>
+<audio controls>
+  <source src="/assets/audio/Faded.mp3" type="audio/mp3">
+</audio>
 
 <h3>Moon River</h3>
 <video width="320" controls>
@@ -51,13 +60,13 @@ subtitle: My Life
 
 # Some of my flute playing recording
 
-<h3>My heart will go on</h3>
+<h3>My heart will go on(2018.3)</h3>
 <audio controls>
   <source src="/assets/audio/我心永恒_笛子.mp3" type="audio/mp3">
 </audio>
 
 
-<h3>The Song of Wind</h3>
+<h3>The Song of Wind(2018.3)</h3>
 <video width="320" controls>
   <source src="/assets/video/flute_2018.mp4" type="video/mp4">
 </video>
