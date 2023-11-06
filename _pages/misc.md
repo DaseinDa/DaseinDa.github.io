@@ -33,6 +33,10 @@ subtitle: My Life
   <source src="/assets/audio/2018_3_Chengdu.mp3" type="audio/mp3">
 </audio>
 
+<h3>Gulf of Alaska</h3>
+<audio controls>
+  <source src="/assets/audio/GulfOfAlaska.mp3" type="audio/mp3">
+</audio>
 
 <h3>芒种(Miscanthus)</h3>
 <audio controls>
