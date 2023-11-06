@@ -48,10 +48,28 @@ subtitle: My Life
   <source src="/assets/audio/芒种.mp3" type="audio/mp3">
 </audio>
 
+<h3>Destiny</h3>
+<audio controls>
+  <source src="/assets/audio/命运.mp3" type="audio/mp3">
+</audio>
+
 <h3>Faded</h3>
 <audio controls>
   <source src="/assets/audio/Faded.mp3" type="audio/mp3">
 </audio>
+
+
+<h3>Song from Secret Garden</h3>
+<video width="320" controls>
+  <source src="/assets/video/SOP1.mp4" type="video/mp4">
+</video>
+
+
+<h3>Flower Dance</h3>
+<video width="320" controls>
+  <source src="/assets/video/FlowerDance1.mp4" type="video/mp4">
+</video>
+
 
 <h3>Moon River</h3>
 <video width="320" controls>
