@@ -11,6 +11,8 @@ subtitle: My Life
 * When at undergraduate, I was a member of the university's high-level orchestra. And also play bands a bit(I floated between different bands as a keyboard player, and did not stay at a stable one). 
 * I often rent a digital piano in my student dormitory so I don't disturb others. But it has to be said that a mechanical piano can better express the layers and intensity control of the music.
 * I like to analyze and discuss the **composition of a piece of music**
+* Becausse I can play/listen the music in my brain, actually I do not often listen to music by ear in comparison with most music enthusiast in my daily time. I often read music sheet to appreciate the music instead. Another reason is that when I was at orchestra/band/preparing music performances, my ear suffered a lot :) so that my brain/ear are sensitive to listening too much. I like music, but I appreciate the peace and quiet more.
+* When I was around 15, my favourtie movie was 3 Idiots. Now my favourite movie is **Dead Poet Society**
 
 
 <table>
