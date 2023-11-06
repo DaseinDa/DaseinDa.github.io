@@ -7,7 +7,7 @@ subtitle: My Life
 
 # More about me
 * Hello, my name in Chinese is 金鑫, grown up at Chengdu, a culturally diverse, inclusive and beautiful city.
-* I was sent to learn violin as a child, because I was shocked by piano's size and keyboard 88 number, and thought that the violin was more cute and lovely to suit me. The fact turns out that I was too young too simple :) a sad story, I am still strugling with pitch's accuracy after so many years.
+* I was sent to learn violin as a child. I am still strugling with pitch's accuracy after so many years.
 * When at undergraduate, I was a member of the university's high-level orchestra. And also play bands a bit(I floated between different bands as a keyboard player, and did not stay at a stable one). 
 * I often rent a digital piano in my student dormitory so I don't disturb others. But it has to be said that a mechanical piano can better express the layers and intensity control of the music.
 * I like to analyze and discuss the **composition of a piece of music**
