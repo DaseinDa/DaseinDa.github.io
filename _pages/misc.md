@@ -13,6 +13,7 @@ subtitle: My Life
 * I like to analyze and discuss the **composition of a piece of music**
 * Becausse I can play/listen the music in my brain, actually I do not often listen to music by ear in comparison with most music enthusiast in my daily time. I often read music sheet to appreciate the music instead. Another reason is that when I was at orchestra/band/preparing music performances, my ear suffered a lot :) so that my brain/ear are sensitive to listening too much. I like music, but I appreciate the peace and quiet more.
 * When I was around 15, my favourtie movie was 3 Idiots. Now my favourite movie is **Dead Poet Society**
+* My MBTI 16 personalities type is: **ENTP**
 
 
 <table>
