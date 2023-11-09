@@ -62,5 +62,4 @@ Submatrices》</a>.
     {% include repository/repo.html repository=repo %}
   {% endfor %}
 </div>
-<a href="../assets/pdf/Rice_SOP_JinXin.pdf" target="_blank"></a>
 > Check out my [projects page](./projects) for more.
