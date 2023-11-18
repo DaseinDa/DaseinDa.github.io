@@ -39,14 +39,14 @@
 - title: Bachelor Education
   type: time_table
   contents:
-    - title: B.S. in Computer Science and Technology
+    - title: BSc in Computer Science and Technology
       institution: Southwestern University of Finance and Economics
       year: June 2021
       description:
         - Admitted with the top 1.7 % at Sichuan Province of the NCEE(National Higher Education Entrance Examination)
       coursework: Information Theory, Data Structure and Algorithm, Computer Network, Numertical Analysis, Assembly/Structured Programming/Object Oriented Programming, Digital Logic Circuit, Compiling Theory, Operating System, Computer Architecture, <a href="../assets/pdf/Blockchain_course.pdf" target="_blank">Blockchain Techs</a>, Artificial Intelligence, Large Scale Open Source Development, Probability and Statistics I & II, Computability and Complexity, Network Security, Android Mobility Develop, Database Application, Web Mining
 
-    - title: B.S. in Mathematics(Honors)
+    - title: BSc in Mathematics(Honors)
       institution: Southwestern University of Finance and Economics
       year: June 2021
       description:
@@ -54,7 +54,7 @@
         - Only 8 students at the university graduating at 2021 successfully obtained the honors degree.
       coursework: Mathematical Analysis, Advanced Algebra, Real Analysis, Functional analysis, Complex Analysis, Numerical Analysis, Optimization theory, Discrete Mathematics, Probabilistic Theory, Partial Differential Equations, Statistics, Stochastic Process, Geometry
 
-    - title: B.S. in Financial Management
+    - title: BSc in Financial Management
       institution: Southwestern University of Finance and Economics
       year: June 2021
       description:
