@@ -54,7 +54,7 @@ See the final report: <a href="./assets/pdf/JinXin_Yin_publication.pdf" target="
 Submatrices》</a>.
 
 > Check out my [cv page](./cv) for more.
-<a href="./assets/pdf/Rice_SOP_JinXin" target="_blank"></a>
+<a href="./assets/pdf/Rice_SOP_JinXin.pdf" target="_blank"></a><a href="./assets/pdf/math_II.pdf" target="_blank"></a>
 ## Projects
 (in constructing......)
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
